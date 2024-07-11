@@ -6,44 +6,34 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
-//using CrystalDecisions.CrystalReports.Engine;
+
 public partial class ceo : System.Web.UI.Page
 {
-    SqlConnection sqlcon = new SqlConnection(sqlsrt.ssqlsrt());
+    SqlConnection sqlcon = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=|DataDirectory|Database.mdf;Integrated Security = True");
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if (Session["EmpName"] == null)
-        {
-            Response.Redirect("login.aspx");
-        }
-        else
+        if (!Page.IsPostBack)
         {
 
             sqlcon.Open();
             SqlDataAdapter adp = new SqlDataAdapter("select Name from branch where Id= '" + Session["branch_id"] + "'; ", sqlcon);
             DataTable tab = new DataTable();
             adp.Fill(tab);
-            var info = TimeZoneInfo.FindSystemTimeZoneById("Egypt Standard Time");
-            DateTimeOffset localServerTime = DateTimeOffset.Now;
-            DateTimeOffset localTime = TimeZoneInfo.ConvertTime(localServerTime, info);
-            LabelTime.Text = localTime.ToString("MM/dd/yyyy h:mm tt");
+            LabelTime.Text += DateTime.Now.ToString("d");
             LabelEmpName.Text = (string)Session["EmpName"];
-            LabelBranchName.Text = tab.Rows[0][0].ToString();
+            LabelBranchName.Text += tab.Rows[0][0];
+
         }
+
     }
     public void WUC_visible_hide()
     {
-        analysis1.Visible = false;  
         Sales_process1.Visible = false;
         show_invoice.Visible = false;
         bottle.Visible = false;
         oil.Visible = false;
         client.Visible = false;
-        AddBottle1.Visible = false;
-        Settings1.Visible = false;
-        HR1.Visible = false;
-        AddOil1.Visible = false;
     }
     protected void Button3_Click1(object sender, EventArgs e)
     {
@@ -57,6 +47,7 @@ public partial class ceo : System.Web.UI.Page
         client.Visible = true;
 
     }
+
     protected void Button3_Click(object sender, EventArgs e)
     {
 
@@ -66,43 +57,32 @@ public partial class ceo : System.Web.UI.Page
 
     protected void Button4_Click(object sender, EventArgs e)
     {
+
         WUC_visible_hide();
         show_invoice.Visible = true;
 
     }
+
     protected void Button1_Click(object sender, EventArgs e)
     {
 
         WUC_visible_hide();
-        AddBottle1.Visible = true;
+        bottle.Visible = true;
+
     }
+
     protected void Button2_Click(object sender, EventArgs e)
     {
 
-        WUC_visible_hide();        
-        AddOil1.Visible = true;
-      
+        WUC_visible_hide();
+        oil.Visible = true;
+
     }
+
     protected void Button5_Click(object sender, EventArgs e)
     {
         Session.Abandon();
         Response.Redirect("login.aspx");
-
-    }
-    protected void Button7_Click(object sender, EventArgs e)
-    {
-        WUC_visible_hide();
-        analysis1.Visible = true;
-    }
-    protected void BtnSettings_Click(object sender, EventArgs e)
-    {
-        WUC_visible_hide();
-        Settings1.Visible = true;
-    }
-    protected void btnHR_Click(object sender, EventArgs e)
-    {
-        WUC_visible_hide();
-        HR1.Visible = true;
 
     }
 }

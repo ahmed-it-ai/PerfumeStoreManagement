@@ -10,11 +10,11 @@ using System.Data.SqlClient;
 
 public partial class login : System.Web.UI.Page
 {
-    
-    SqlConnection sqlcon = new SqlConnection(sqlsrt.ssqlsrt());
+
+    SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|Database.mdf;Integrated Security=True");
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -70,6 +70,4 @@ public partial class login : System.Web.UI.Page
 
 
     }
-
-
 }

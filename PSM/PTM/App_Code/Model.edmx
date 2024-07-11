@@ -1,0 +1,734 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DatabaseModelStoreContainer">
+    <EntitySet Name="bottle" EntityType="DatabaseModel.Store.bottle" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="bottleOfBranch" EntityType="DatabaseModel.Store.bottleOfBranch" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="branch" EntityType="DatabaseModel.Store.branch" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="client" EntityType="DatabaseModel.Store.client" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="employee" EntityType="DatabaseModel.Store.employee" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="invoice" EntityType="DatabaseModel.Store.invoice" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="oil" EntityType="DatabaseModel.Store.oil" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="oil_of_branch" EntityType="DatabaseModel.Store.oil_of_branch" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="pay_process" EntityType="DatabaseModel.Store.pay_process" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_bottleOfBranch_ToTable" Association="DatabaseModel.Store.FK_bottleOfBranch_ToTable">
+      <End Role="bottle" EntitySet="bottle" />
+      <End Role="bottleOfBranch" EntitySet="bottleOfBranch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bottle_ToTable" Association="DatabaseModel.Store.FK_bottle_ToTable">
+      <End Role="branch" EntitySet="branch" />
+      <End Role="bottleOfBranch" EntitySet="bottleOfBranch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pay_process_ToTable_1" Association="DatabaseModel.Store.FK_pay_process_ToTable_1">
+      <End Role="bottleOfBranch" EntitySet="bottleOfBranch" />
+      <End Role="pay_process" EntitySet="pay_process" />
+    </AssociationSet>
+    <AssociationSet Name="FK_branch_ToTable" Association="DatabaseModel.Store.FK_branch_ToTable">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="branch" EntitySet="branch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_employee_ToTable" Association="DatabaseModel.Store.FK_employee_ToTable">
+      <End Role="branch" EntitySet="branch" />
+      <End Role="employee" EntitySet="employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_invoice_ToTable_1" Association="DatabaseModel.Store.FK_invoice_ToTable_1">
+      <End Role="branch" EntitySet="branch" />
+      <End Role="invoice" EntitySet="invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_oil_of_branch_ToTable" Association="DatabaseModel.Store.FK_oil_of_branch_ToTable">
+      <End Role="branch" EntitySet="branch" />
+      <End Role="oil_of_branch" EntitySet="oil_of_branch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_invoice_ToTable_2" Association="DatabaseModel.Store.FK_invoice_ToTable_2">
+      <End Role="client" EntitySet="client" />
+      <End Role="invoice" EntitySet="invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_invoice_ToTable" Association="DatabaseModel.Store.FK_invoice_ToTable">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="invoice" EntitySet="invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pay_process_ToTable" Association="DatabaseModel.Store.FK_pay_process_ToTable">
+      <End Role="invoice" EntitySet="invoice" />
+      <End Role="pay_process" EntitySet="pay_process" />
+    </AssociationSet>
+    <AssociationSet Name="FK_oil_of_branch_ToTable_1" Association="DatabaseModel.Store.FK_oil_of_branch_ToTable_1">
+      <End Role="oil" EntitySet="oil" />
+      <End Role="oil_of_branch" EntitySet="oil_of_branch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pay_process_ToTable_3" Association="DatabaseModel.Store.FK_pay_process_ToTable_3">
+      <End Role="oil_of_branch" EntitySet="oil_of_branch" />
+      <End Role="pay_process" EntitySet="pay_process" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="bottle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" Nullable="true" MaxLength="18" />
+    <Property Name="price" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="bottleOfBranch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountOfBottle" Type="nchar" Nullable="true" MaxLength="18" />
+    <Property Name="bottleId" Type="int" Nullable="true" />
+    <Property Name="BranchId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="branch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="true" MaxLength="18" />
+    <Property Name="manager" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name_" Type="nchar" Nullable="true" MaxLength="15" />
+    <Property Name="phone" Type="nchar" Nullable="true" MaxLength="11" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="true" MaxLength="18" />
+    <Property Name="jop_name" Type="nchar" Nullable="true" MaxLength="18" />
+    <Property Name="start_Date" Type="datetime" Nullable="true" />
+    <Property Name="salary" Type="int" Nullable="true" />
+    <Property Name="branch_id" Type="int" Nullable="true" />
+    <Property Name="password" Type="nchar" Nullable="true" MaxLength="18" />
+    <Property Name="userName" Type="nchar" Nullable="true" MaxLength="18" />
+  </EntityType>
+  <EntityType Name="invoice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TotaleCash" Type="int" Nullable="true" />
+    <Property Name="DateInvoice" Type="datetime" Nullable="true" />
+    <Property Name="seller_id" Type="int" Nullable="true" />
+    <Property Name="bransh_id" Type="int" Nullable="true" />
+    <Property Name="client_id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="oil">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_" Type="nchar" Nullable="true" MaxLength="18" />
+    <Property Name="price" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="oil_of_branch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_oil" Type="int" Nullable="true" />
+    <Property Name="id_branch" Type="int" Nullable="true" />
+    <Property Name="weight" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="pay_process">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="oil_id" Type="int" Nullable="true" />
+    <Property Name="Quantity_of_oil" Type="int" Nullable="true" />
+    <Property Name="price" Type="int" Nullable="true" />
+    <Property Name="invoice_id" Type="int" Nullable="true" />
+    <Property Name="bottle_id" Type="int" Nullable="true" />
+  </EntityType>
+  <Association Name="FK_bottleOfBranch_ToTable">
+    <End Role="bottle" Type="DatabaseModel.Store.bottle" Multiplicity="0..1" />
+    <End Role="bottleOfBranch" Type="DatabaseModel.Store.bottleOfBranch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bottle">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="bottleOfBranch">
+        <PropertyRef Name="bottleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bottle_ToTable">
+    <End Role="branch" Type="DatabaseModel.Store.branch" Multiplicity="0..1" />
+    <End Role="bottleOfBranch" Type="DatabaseModel.Store.bottleOfBranch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="branch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="bottleOfBranch">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pay_process_ToTable_1">
+    <End Role="bottleOfBranch" Type="DatabaseModel.Store.bottleOfBranch" Multiplicity="0..1" />
+    <End Role="pay_process" Type="DatabaseModel.Store.pay_process" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bottleOfBranch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="pay_process">
+        <PropertyRef Name="bottle_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_branch_ToTable">
+    <End Role="employee" Type="DatabaseModel.Store.employee" Multiplicity="0..1" />
+    <End Role="branch" Type="DatabaseModel.Store.branch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="branch">
+        <PropertyRef Name="manager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_employee_ToTable">
+    <End Role="branch" Type="DatabaseModel.Store.branch" Multiplicity="0..1" />
+    <End Role="employee" Type="DatabaseModel.Store.employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="branch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="employee">
+        <PropertyRef Name="branch_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_invoice_ToTable_1">
+    <End Role="branch" Type="DatabaseModel.Store.branch" Multiplicity="0..1" />
+    <End Role="invoice" Type="DatabaseModel.Store.invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="branch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="invoice">
+        <PropertyRef Name="bransh_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_oil_of_branch_ToTable">
+    <End Role="branch" Type="DatabaseModel.Store.branch" Multiplicity="0..1" />
+    <End Role="oil_of_branch" Type="DatabaseModel.Store.oil_of_branch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="branch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="oil_of_branch">
+        <PropertyRef Name="id_branch" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_invoice_ToTable_2">
+    <End Role="client" Type="DatabaseModel.Store.client" Multiplicity="0..1" />
+    <End Role="invoice" Type="DatabaseModel.Store.invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="invoice">
+        <PropertyRef Name="client_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_invoice_ToTable">
+    <End Role="employee" Type="DatabaseModel.Store.employee" Multiplicity="0..1" />
+    <End Role="invoice" Type="DatabaseModel.Store.invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="invoice">
+        <PropertyRef Name="seller_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pay_process_ToTable">
+    <End Role="invoice" Type="DatabaseModel.Store.invoice" Multiplicity="0..1" />
+    <End Role="pay_process" Type="DatabaseModel.Store.pay_process" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="invoice">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="pay_process">
+        <PropertyRef Name="invoice_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_oil_of_branch_ToTable_1">
+    <End Role="oil" Type="DatabaseModel.Store.oil" Multiplicity="0..1" />
+    <End Role="oil_of_branch" Type="DatabaseModel.Store.oil_of_branch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="oil">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="oil_of_branch">
+        <PropertyRef Name="id_oil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pay_process_ToTable_3">
+    <End Role="oil_of_branch" Type="DatabaseModel.Store.oil_of_branch" Multiplicity="0..1" />
+    <End Role="pay_process" Type="DatabaseModel.Store.pay_process" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="oil_of_branch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="pay_process">
+        <PropertyRef Name="oil_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="bottle" EntityType="DatabaseModel.bottle" />
+          <EntitySet Name="bottleOfBranch" EntityType="DatabaseModel.bottleOfBranch" />
+          <EntitySet Name="branch" EntityType="DatabaseModel.branch" />
+          <EntitySet Name="client" EntityType="DatabaseModel.client" />
+          <EntitySet Name="employee" EntityType="DatabaseModel.employee" />
+          <EntitySet Name="invoice" EntityType="DatabaseModel.invoice" />
+          <EntitySet Name="oil" EntityType="DatabaseModel.oil" />
+          <EntitySet Name="oil_of_branch" EntityType="DatabaseModel.oil_of_branch" />
+          <EntitySet Name="pay_process" EntityType="DatabaseModel.pay_process" />
+          <AssociationSet Name="FK_bottleOfBranch_ToTable" Association="DatabaseModel.FK_bottleOfBranch_ToTable">
+            <End Role="bottle" EntitySet="bottle" />
+            <End Role="bottleOfBranch" EntitySet="bottleOfBranch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bottle_ToTable" Association="DatabaseModel.FK_bottle_ToTable">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="bottleOfBranch" EntitySet="bottleOfBranch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pay_process_ToTable_1" Association="DatabaseModel.FK_pay_process_ToTable_1">
+            <End Role="bottleOfBranch" EntitySet="bottleOfBranch" />
+            <End Role="pay_process" EntitySet="pay_process" />
+          </AssociationSet>
+          <AssociationSet Name="FK_branch_ToTable" Association="DatabaseModel.FK_branch_ToTable">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="branch" EntitySet="branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_employee_ToTable" Association="DatabaseModel.FK_employee_ToTable">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invoice_ToTable_1" Association="DatabaseModel.FK_invoice_ToTable_1">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="invoice" EntitySet="invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_oil_of_branch_ToTable" Association="DatabaseModel.FK_oil_of_branch_ToTable">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="oil_of_branch" EntitySet="oil_of_branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invoice_ToTable_2" Association="DatabaseModel.FK_invoice_ToTable_2">
+            <End Role="client" EntitySet="client" />
+            <End Role="invoice" EntitySet="invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invoice_ToTable" Association="DatabaseModel.FK_invoice_ToTable">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="invoice" EntitySet="invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pay_process_ToTable" Association="DatabaseModel.FK_pay_process_ToTable">
+            <End Role="invoice" EntitySet="invoice" />
+            <End Role="pay_process" EntitySet="pay_process" />
+          </AssociationSet>
+          <AssociationSet Name="FK_oil_of_branch_ToTable_1" Association="DatabaseModel.FK_oil_of_branch_ToTable_1">
+            <End Role="oil" EntitySet="oil" />
+            <End Role="oil_of_branch" EntitySet="oil_of_branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pay_process_ToTable_3" Association="DatabaseModel.FK_pay_process_ToTable_3">
+            <End Role="oil_of_branch" EntitySet="oil_of_branch" />
+            <End Role="pay_process" EntitySet="pay_process" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="bottle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Int32" />
+          <NavigationProperty Name="bottleOfBranch" Relationship="DatabaseModel.FK_bottleOfBranch_ToTable" FromRole="bottle" ToRole="bottleOfBranch" />
+        </EntityType>
+        <EntityType Name="bottleOfBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountOfBottle" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
+          <Property Name="bottleId" Type="Int32" />
+          <Property Name="BranchId" Type="Int32" />
+          <NavigationProperty Name="bottle" Relationship="DatabaseModel.FK_bottleOfBranch_ToTable" FromRole="bottleOfBranch" ToRole="bottle" />
+          <NavigationProperty Name="branch" Relationship="DatabaseModel.FK_bottle_ToTable" FromRole="bottleOfBranch" ToRole="branch" />
+          <NavigationProperty Name="pay_process" Relationship="DatabaseModel.FK_pay_process_ToTable_1" FromRole="bottleOfBranch" ToRole="pay_process" />
+        </EntityType>
+        <EntityType Name="branch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
+          <Property Name="manager" Type="Int32" />
+          <NavigationProperty Name="bottleOfBranch" Relationship="DatabaseModel.FK_bottle_ToTable" FromRole="branch" ToRole="bottleOfBranch" />
+          <NavigationProperty Name="employee" Relationship="DatabaseModel.FK_branch_ToTable" FromRole="branch" ToRole="employee" />
+          <NavigationProperty Name="employee1" Relationship="DatabaseModel.FK_employee_ToTable" FromRole="branch" ToRole="employee" />
+          <NavigationProperty Name="invoice" Relationship="DatabaseModel.FK_invoice_ToTable_1" FromRole="branch" ToRole="invoice" />
+          <NavigationProperty Name="oil_of_branch" Relationship="DatabaseModel.FK_oil_of_branch_ToTable" FromRole="branch" ToRole="oil_of_branch" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name_" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="invoice" Relationship="DatabaseModel.FK_invoice_ToTable_2" FromRole="client" ToRole="invoice" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
+          <Property Name="jop_name" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
+          <Property Name="start_Date" Type="DateTime" Precision="0" />
+          <Property Name="salary" Type="Int32" />
+          <Property Name="branch_id" Type="Int32" />
+          <Property Name="password" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
+          <Property Name="userName" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="branch" Relationship="DatabaseModel.FK_branch_ToTable" FromRole="employee" ToRole="branch" />
+          <NavigationProperty Name="branch1" Relationship="DatabaseModel.FK_employee_ToTable" FromRole="employee" ToRole="branch" />
+          <NavigationProperty Name="invoice" Relationship="DatabaseModel.FK_invoice_ToTable" FromRole="employee" ToRole="invoice" />
+        </EntityType>
+        <EntityType Name="invoice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TotaleCash" Type="Int32" />
+          <Property Name="DateInvoice" Type="DateTime" Precision="0" />
+          <Property Name="seller_id" Type="Int32" />
+          <Property Name="bransh_id" Type="Int32" />
+          <Property Name="client_id" Type="Int32" />
+          <NavigationProperty Name="branch" Relationship="DatabaseModel.FK_invoice_ToTable_1" FromRole="invoice" ToRole="branch" />
+          <NavigationProperty Name="client" Relationship="DatabaseModel.FK_invoice_ToTable_2" FromRole="invoice" ToRole="client" />
+          <NavigationProperty Name="employee" Relationship="DatabaseModel.FK_invoice_ToTable" FromRole="invoice" ToRole="employee" />
+          <NavigationProperty Name="pay_process" Relationship="DatabaseModel.FK_pay_process_ToTable" FromRole="invoice" ToRole="pay_process" />
+        </EntityType>
+        <EntityType Name="oil">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
+          <Property Name="price" Type="Int32" />
+          <NavigationProperty Name="oil_of_branch" Relationship="DatabaseModel.FK_oil_of_branch_ToTable_1" FromRole="oil" ToRole="oil_of_branch" />
+        </EntityType>
+        <EntityType Name="oil_of_branch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_oil" Type="Int32" />
+          <Property Name="id_branch" Type="Int32" />
+          <Property Name="weight" Type="Int32" />
+          <NavigationProperty Name="branch" Relationship="DatabaseModel.FK_oil_of_branch_ToTable" FromRole="oil_of_branch" ToRole="branch" />
+          <NavigationProperty Name="oil" Relationship="DatabaseModel.FK_oil_of_branch_ToTable_1" FromRole="oil_of_branch" ToRole="oil" />
+          <NavigationProperty Name="pay_process" Relationship="DatabaseModel.FK_pay_process_ToTable_3" FromRole="oil_of_branch" ToRole="pay_process" />
+        </EntityType>
+        <EntityType Name="pay_process">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="oil_id" Type="Int32" />
+          <Property Name="Quantity_of_oil" Type="Int32" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="invoice_id" Type="Int32" />
+          <Property Name="bottle_id" Type="Int32" />
+          <NavigationProperty Name="bottleOfBranch" Relationship="DatabaseModel.FK_pay_process_ToTable_1" FromRole="pay_process" ToRole="bottleOfBranch" />
+          <NavigationProperty Name="invoice" Relationship="DatabaseModel.FK_pay_process_ToTable" FromRole="pay_process" ToRole="invoice" />
+          <NavigationProperty Name="oil_of_branch" Relationship="DatabaseModel.FK_pay_process_ToTable_3" FromRole="pay_process" ToRole="oil_of_branch" />
+        </EntityType>
+        <Association Name="FK_bottleOfBranch_ToTable">
+          <End Type="DatabaseModel.bottle" Role="bottle" Multiplicity="0..1" />
+          <End Type="DatabaseModel.bottleOfBranch" Role="bottleOfBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bottle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="bottleOfBranch">
+              <PropertyRef Name="bottleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bottle_ToTable">
+          <End Type="DatabaseModel.branch" Role="branch" Multiplicity="0..1" />
+          <End Type="DatabaseModel.bottleOfBranch" Role="bottleOfBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="bottleOfBranch">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pay_process_ToTable_1">
+          <End Type="DatabaseModel.bottleOfBranch" Role="bottleOfBranch" Multiplicity="0..1" />
+          <End Type="DatabaseModel.pay_process" Role="pay_process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bottleOfBranch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="pay_process">
+              <PropertyRef Name="bottle_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_branch_ToTable">
+          <End Type="DatabaseModel.employee" Role="employee" Multiplicity="0..1" />
+          <End Type="DatabaseModel.branch" Role="branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="branch">
+              <PropertyRef Name="manager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_employee_ToTable">
+          <End Type="DatabaseModel.branch" Role="branch" Multiplicity="0..1" />
+          <End Type="DatabaseModel.employee" Role="employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invoice_ToTable_1">
+          <End Type="DatabaseModel.branch" Role="branch" Multiplicity="0..1" />
+          <End Type="DatabaseModel.invoice" Role="invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="invoice">
+              <PropertyRef Name="bransh_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_oil_of_branch_ToTable">
+          <End Type="DatabaseModel.branch" Role="branch" Multiplicity="0..1" />
+          <End Type="DatabaseModel.oil_of_branch" Role="oil_of_branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="oil_of_branch">
+              <PropertyRef Name="id_branch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invoice_ToTable_2">
+          <End Type="DatabaseModel.client" Role="client" Multiplicity="0..1" />
+          <End Type="DatabaseModel.invoice" Role="invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="invoice">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invoice_ToTable">
+          <End Type="DatabaseModel.employee" Role="employee" Multiplicity="0..1" />
+          <End Type="DatabaseModel.invoice" Role="invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="invoice">
+              <PropertyRef Name="seller_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pay_process_ToTable">
+          <End Type="DatabaseModel.invoice" Role="invoice" Multiplicity="0..1" />
+          <End Type="DatabaseModel.pay_process" Role="pay_process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="invoice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="pay_process">
+              <PropertyRef Name="invoice_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_oil_of_branch_ToTable_1">
+          <End Type="DatabaseModel.oil" Role="oil" Multiplicity="0..1" />
+          <End Type="DatabaseModel.oil_of_branch" Role="oil_of_branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oil">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="oil_of_branch">
+              <PropertyRef Name="id_oil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pay_process_ToTable_3">
+          <End Type="DatabaseModel.oil_of_branch" Role="oil_of_branch" Multiplicity="0..1" />
+          <End Type="DatabaseModel.pay_process" Role="pay_process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oil_of_branch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="pay_process">
+              <PropertyRef Name="oil_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+    <EntitySetMapping Name="bottle">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.bottle)">
+        <MappingFragment StoreEntitySet="bottle">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bottleOfBranch">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.bottleOfBranch)">
+        <MappingFragment StoreEntitySet="bottleOfBranch">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CountOfBottle" ColumnName="CountOfBottle" />
+          <ScalarProperty Name="bottleId" ColumnName="bottleId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="branch">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.branch)">
+        <MappingFragment StoreEntitySet="branch">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="manager" ColumnName="manager" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="client">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.client)">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name_" ColumnName="Name_" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employee">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.employee)">
+        <MappingFragment StoreEntitySet="employee">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="jop_name" ColumnName="jop_name" />
+          <ScalarProperty Name="start_Date" ColumnName="start_Date" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="invoice">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.invoice)">
+        <MappingFragment StoreEntitySet="invoice">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TotaleCash" ColumnName="TotaleCash" />
+          <ScalarProperty Name="DateInvoice" ColumnName="DateInvoice" />
+          <ScalarProperty Name="seller_id" ColumnName="seller_id" />
+          <ScalarProperty Name="bransh_id" ColumnName="bransh_id" />
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oil">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.oil)">
+        <MappingFragment StoreEntitySet="oil">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name_" ColumnName="Name_" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oil_of_branch">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.oil_of_branch)">
+        <MappingFragment StoreEntitySet="oil_of_branch">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id_oil" ColumnName="id_oil" />
+          <ScalarProperty Name="id_branch" ColumnName="id_branch" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pay_process">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.pay_process)">
+        <MappingFragment StoreEntitySet="pay_process">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="oil_id" ColumnName="oil_id" />
+          <ScalarProperty Name="Quantity_of_oil" ColumnName="Quantity_of_oil" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
+          <ScalarProperty Name="bottle_id" ColumnName="bottle_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

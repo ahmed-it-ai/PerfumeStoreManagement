@@ -1,13 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="seller.aspx.cs" Inherits="seller" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="testing.aspx.cs" Inherits="testing" %>
 
-<%@ Register Src="~/WebVeiw/Sales_process.ascx" TagPrefix="uc1" TagName="Sales_process" %>
 <%@ Register Src="~/WebVeiw/show_invoice.ascx" TagPrefix="uc1" TagName="show_invoice" %>
-<%@ Register Src="~/WebVeiw/bottle.ascx" TagPrefix="uc1" TagName="bottle" %>
-<%@ Register Src="~/WebVeiw/oil.ascx" TagPrefix="uc1" TagName="oil" %>
-<%@ Register Src="~/WebVeiw/client.ascx" TagPrefix="uc1" TagName="client" %>
-
-
-
+<%@ Register Src="~/WebVeiw/AddBottle.ascx" TagPrefix="uc1" TagName="AddBottle" %>
 
 
 
@@ -41,17 +35,17 @@
                     </button>
                 </div>
                 <ul class="">
-                    <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-store"></i> <asp:Button ID="Button3" runat="server"  Text=" sales process" class="" BackColor="#001E3D" BorderStyle="None" ForeColor="White" OnClick="Button3_Click1" /></a></li>
-                    <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-store"></i> <asp:Button ID="Button4" runat="server"  Text="invoice " class="" BackColor="#001E3D" BorderStyle="None" ForeColor="White" OnClick="Button4_Click" /></a></li>
+                    <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-store"></i> <asp:Button ID="Button3" runat="server"  Text=" sales process" class="" BackColor="#001E3D" BorderStyle="None" ForeColor="White" /></a></li>
+                    <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-store"></i> <asp:Button ID="Button4" runat="server"  Text="invoice " class="" BackColor="#001E3D" BorderStyle="None" ForeColor="White" OnClick="Button4_Click"  /></a></li>
                 </ul>
                 <hr class="h-color mx-2">
                 <ul class="">
 
                     <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-store"></i> <asp:Button ID="Button1" runat="server"  Text="Bottle" class="" BackColor="#001E3D" BorderStyle="None" ForeColor="White" OnClick="Button1_Click" /></a></li>
-                    <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-store"></i> <asp:Button ID="Button2" runat="server"  Text="oil" class="" BackColor="#001E3D" BorderStyle="None" ForeColor="White" OnClick="Button2_Click1" /></a></li>
-                    <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-store"></i> <asp:Button ID="Button6" runat="server"  Text="client" class="" BackColor="#001E3D" BorderStyle="None" ForeColor="White" OnClick="Button6_Click" /></a></li>
+                    <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-store"></i> <asp:Button ID="Button2" runat="server"  Text="oil" class="" BackColor="#001E3D" BorderStyle="None" ForeColor="White"   /></a></li>
+                    <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-store"></i> <asp:Button ID="Button6" runat="server"  Text="client" class="" BackColor="#001E3D" BorderStyle="None" ForeColor="White" /></a></li>
 
-                    <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-sign-out-alt" style="  color:red"  ></i>  <asp:Button ID="Button5" runat="server"  Text="logout" BackColor="#001E3D" BorderStyle="None" OnClick="Button2_Click" ForeColor="Red" /></a></li>
+                    <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-sign-out-alt" style="  color:red"  ></i>  <asp:Button ID="Button5" runat="server"  Text="logout" BackColor="#001E3D" BorderStyle="None" ForeColor="Red"  /></a></li>
 
                 </ul>
             </div>
@@ -86,11 +80,13 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                           <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+                                        
+                                        <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
                                             <li class="nav-item">
-                                                <a class="nav-link disabled" aria-disabled="true"><asp:Label runat="server" Text="seller" ID="Label1"></asp:Label></a>
+                                                <a class="nav-link disabled" aria-disabled="true"><asp:Label runat="server" Text="CEO" ID="Label1"></asp:Label></a>
                                             </li>
                                         </ul>
+
                                         <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
 
 
@@ -123,21 +119,17 @@
                 </nav>
 
                 <div class="dashboard-content px-3 pt-4">
-                        
-                    <uc1:Sales_process runat="server" ID="Sales_process1" Visible="False" />
-                    <uc1:show_invoice runat="server" id="show_invoice" Visible="False" />
-                    <uc1:bottle runat="server" ID="bottle" Visible="False" />
-                    <uc1:oil runat="server" ID="oil" Visible="False" />
-                    <uc1:client runat="server" ID="client" Visible="False" />
 
 
+                    <uc1:AddBottle runat="server" ID="AddBottle" Visible="False" />
+                    <uc1:show_invoice runat="server" ID="show_invoice" Visible="False" />
 
+
+                   
                 </div>
             </div>
         </div>
 
-
-/        <script src="style/jquery.min.js"></script>
 
     </form>
 

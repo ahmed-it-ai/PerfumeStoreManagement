@@ -1,10 +1,18 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="manager.aspx.cs" Inherits="manager" %>
+
+
+
+
 <%@ Register Src="~/WebVeiw/Sales_process.ascx" TagPrefix="uc1" TagName="Sales_process" %>
 <%@ Register Src="~/WebVeiw/show_invoice.ascx" TagPrefix="uc1" TagName="show_invoice" %>
 <%@ Register Src="~/WebVeiw/oil.ascx" TagPrefix="uc1" TagName="oil" %>
 <%@ Register Src="~/WebVeiw/client.ascx" TagPrefix="uc1" TagName="client" %>
 <%@ Register Src="~/WebVeiw/AddBottle.ascx" TagPrefix="uc1" TagName="AddBottle" %>
-<%@ Register src="WebVeiw/AddOil.ascx" tagname="AddOil" tagprefix="uc2" %>
+
+
+
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -58,11 +66,22 @@
 
                         </div>
 
-                        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" >                                                                    
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" >
+                                                   
+                    
+
+
+
+
                             <nav class="navbar bg-dark  border-body" data-bs-theme="dark">
-                                <div class="container-fluid" data-bs-theme="dark" >                                   
+                                <div class="container-fluid" data-bs-theme="dark" >
+
+                                   
                                     <div class="collapse navbar-collapse" id="navbarSupportedContent"   >
+
                                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
                                             <li class="nav-item">
                                                 <a class="nav-link disabled" aria-disabled="true" >
                                                     <asp:Label runat="server" Text="" ID="LabelTime"></asp:Label>
@@ -96,20 +115,32 @@
                                 
                                 </div>
                             </nav>
+
+
+
+
+
+
                         </div>
                     </div>
                 </nav>
-                <div class="dashboard-content px-3 pt-4">                                            
+
+                <div class="dashboard-content px-3 pt-4">
+                        
+                     
                     <uc1:Sales_process runat="server" ID="Sales_process1" Visible="False" />
                     <uc1:show_invoice runat="server" id="show_invoice" Visible="False" />
+                    <uc1:oil runat="server" ID="oil" Visible="False" />
                     <uc1:client runat="server" ID="client" Visible="False" />
-                    <uc2:AddOil ID="AddOil1" runat="server" Visible="False" />
                     <uc1:AddBottle runat="server" id="AddBottle" Visible="False" />
 
                 </div>
             </div>
         </div>
+
+
     </form>
+
 </body>
 </html>
 
@@ -121,4 +152,9 @@
 
 
 
-           
+               
+
+
+
+
+

@@ -6,21 +6,36 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+
 public partial class seller : System.Web.UI.Page
 {
-    SqlConnection sqlcon = new SqlConnection(sqlsrt.ssqlsrt());
+
+
+    SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|Database.mdf;Integrated Security=True");
+
+    
+
     protected void Page_Load(object sender, EventArgs e)
     {
+
+
+
+
         if (!Page.IsPostBack)
         {
+
+
             sqlcon.Open();
             SqlDataAdapter adp = new SqlDataAdapter("select Name from branch where Id= '" + Session["branch_id"] + "'; ", sqlcon);
             DataTable tab = new DataTable();
             adp.Fill(tab);
             LabelTime.Text += DateTime.Now.ToString("d");
             LabelEmpName.Text = (string)Session["EmpName"];
-            LabelBranchName.Text += tab.Rows[0][0];            
+            LabelBranchName.Text += tab.Rows[0][0];
+            
         }
+
+
     }
     public  void WUC_visible_hide()
     {
@@ -30,8 +45,13 @@ public partial class seller : System.Web.UI.Page
         oil.Visible = false;
         client.Visible = false;
     }
+
     protected void Button3_Click(object sender, EventArgs e)
     {
+
+        
+
+
     }
 
     protected void Button2_Click(object sender, EventArgs e)
@@ -41,6 +61,7 @@ public partial class seller : System.Web.UI.Page
         Response.Redirect("login.aspx");
 
     }
+
     protected void Button3_Click1(object sender, EventArgs e)
     {
         WUC_visible_hide();
@@ -60,11 +81,13 @@ public partial class seller : System.Web.UI.Page
         bottle.Visible = true;
 
     }
+
     protected void Button2_Click1(object sender, EventArgs e)
     {
         WUC_visible_hide();
         oil.Visible = true;
     }
+
     protected void Button6_Click(object sender, EventArgs e)
     {
         WUC_visible_hide();
