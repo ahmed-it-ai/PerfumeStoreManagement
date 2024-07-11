@@ -1,4 +1,23 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="AddBottle.ascx.cs" Inherits="WebVeiw_AddBottle" %>
+
+<script>
+  function printpage() {
+
+   var getpanel = document.getElementById("<%= Panel1.ClientID%>");
+   var MainWindow = window.open('', '', 'height=500,width=800');
+   MainWindow.document.write('<html><head><title>Print Page</title>');
+   MainWindow.document.write('</head><body>');
+   MainWindow.document.write(getpanel.innerHTML);
+   MainWindow.document.write('</body></html>');
+   MainWindow.document.close();
+   setTimeout(function () {
+    MainWindow.print();
+   }, 5);
+   return false;
+
+  }
+</script>
+
 <style type="text/css">
 
 
@@ -31,17 +50,21 @@
         .auto-style28 {
             margin-left: 61px;
         }
+    .auto-style29 {
+        text-align: center;
+        width: 98px;
+    }
     </style>
 
 <table class="auto-style1">
     <tr>
         <td class="auto-style2">&nbsp;</td>
-        <td class="auto-style2" colspan="2">&nbsp;</td>
+        <td class="auto-style29" colspan="2">&nbsp;</td>
         <td class="auto-style2">&nbsp;</td>
     </tr>
     <tr>
         <td class="auto-style2">&nbsp;</td>
-        <td class="auto-style2" colspan="2">&nbsp;</td>
+        <td class="auto-style29" colspan="2">&nbsp;</td>
         <td class="auto-style2">&nbsp;</td>
     </tr>
     <tr>
@@ -54,7 +77,7 @@
     </tr>
     <tr>
         <td class="auto-style2">&nbsp;</td>
-        <td class="auto-style2" colspan="2">&nbsp;</td>
+        <td class="auto-style29" colspan="2">&nbsp;</td>
         <td class="auto-style2">&nbsp;</td>
     </tr>
     <tr>
@@ -67,15 +90,24 @@
     </tr>
     <tr>
         <td class="auto-style2">&nbsp;</td>
-        <td class="auto-style2" colspan="2">
+        <td class="auto-style29" colspan="2">
             <asp:Button ID="Button5" runat="server" BackColor="#AAFFFF" BorderStyle="None" OnClick="Button5_Click" Text="Add" />
         </td>
-        <td class="auto-style2">&nbsp;</td>
+        <td class="auto-style2">
+
+
+            <asp:Button ID="Button6" runat="server" BackColor="#AAFFFF" BorderStyle="None"  OnClientClick="return printpage();" Text="Print Rebort " />
+        
+        </td>
     </tr>
     <tr>
         <td class="auto-style2">&nbsp;</td>
-        <td class="auto-style2" colspan="2">
-        <asp:GridView ID="GridViewBottle" runat="server" CellPadding="4" CssClass="auto-style28" ForeColor="#333333" GridLines="None" Width="463px">
+        <td class="auto-style29" colspan="2">
+
+
+            <asp:Panel ID="Panel1" runat="server">
+
+                <asp:GridView ID="GridViewBottle" runat="server" CellPadding="4" CssClass="auto-style28" ForeColor="#333333" GridLines="None" Width="463px">
             <AlternatingRowStyle BackColor="White" />
             <EditRowStyle BackColor="#2461BF" />
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -88,7 +120,18 @@
             <SortedDescendingCellStyle BackColor="#E9EBEF" />
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
+
+            </asp:Panel>
+        
         </td>
+        <td class="auto-style2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td class="auto-style2">&nbsp;</td>
+        <td class="auto-style29" colspan="2">
+
+
+            &nbsp;</td>
         <td class="auto-style2">&nbsp;</td>
     </tr>
 </table>

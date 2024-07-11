@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 public partial class Sales_process : System.Web.UI.UserControl
 {
-    SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|Database.mdf;Integrated Security=True");
+    SqlConnection sqlcon = new SqlConnection(@"workstation id=PTMDataBase.mssql.somee.com;packet size=4096;user id=ahmedZamlkawy_SQLLogin_1;pwd=aww4jpggwh;data source=PTMDataBase.mssql.somee.com;persist security info=False;initial catalog=PTMDataBase;TrustServerCertificate=True");
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -27,10 +27,15 @@ public partial class Sales_process : System.Web.UI.UserControl
                 SqlDataAdapter adp = new SqlDataAdapter("select Name from branch where Id= '" + Session["branch_id"] + "'; ", sqlcon);
                 DataTable tab = new DataTable();
                 adp.Fill(tab);
-                LabelTime.Text += DateTime.Now.ToString("d");
+                var info = TimeZoneInfo.FindSystemTimeZoneById("Egypt Standard Time");
+                DateTimeOffset localServerTime = DateTimeOffset.Now;
+                DateTimeOffset localTime = TimeZoneInfo.ConvertTime(localServerTime, info);                
+                LabelTime.Text += localTime.ToString("MM/dd/yyyy h:mm tt");
                 LabelEmpName.Text = (string)Session["EmpName"];
                 LabelBranchName.Text += tab.Rows[0][0];
+                clearall();
             }
+       
         }
 
     } 
@@ -55,7 +60,7 @@ public partial class Sales_process : System.Web.UI.UserControl
         txtCash.Text = "";
         txtQuanttityOfOil.Visible = false;
         txtQuanttityOfOil.Text="";
-        TextTotalCash.Text = "";
+        TextTotalCash.Text ="0";
         txtBottleType.Visible = false;
         txtBottleType.DataBind();
 
@@ -102,6 +107,9 @@ public partial class Sales_process : System.Web.UI.UserControl
             TextCustomerName.Visible = true;
             txtCash.Visible = true;
             txtQuanttityOfOil.Visible = true;
+
+
+
 
         }
         else
@@ -154,11 +162,17 @@ public partial class Sales_process : System.Web.UI.UserControl
 
         sqlcon.Open();
 
-        SqlDataAdapter adpClient = new SqlDataAdapter("select Id from client where clientName = '" + TextCustomerName.Text + "'; ", sqlcon);
+        SqlDataAdapter adpClient = new SqlDataAdapter("select Id from client where clientName = N'" + TextCustomerName.Text + "'; ", sqlcon);
         DataTable tabClient = new DataTable();
         adpClient.Fill(tabClient);
-        //to get client id
-        SqlCommand com = new SqlCommand("insert into invoice(  TotaleCash ,DateInvoice ,seller_id ,bransh_id,  client_id   ) values ( " + TextTotalCash.Text + " ,'" + DateTime.Now.ToString("d") + "'," + Session["EmpId"] + "," + Session["branch_id"] + "," + tabClient.Rows[0][0] + ")", sqlcon);
+        //to get client id         
+        var info = TimeZoneInfo.FindSystemTimeZoneById("Egypt Standard Time");
+        DateTimeOffset localServerTime = DateTimeOffset.Now;
+        DateTimeOffset localTime = TimeZoneInfo.ConvertTime(localServerTime, info);
+        
+
+
+        SqlCommand com = new SqlCommand("insert into invoice(  TotaleCash ,DateInvoice ,seller_id ,bransh_id,  client_id   ) values ( " + TextTotalCash.Text + " ,'" + localTime.ToString("MM/dd/yyyy h:mm tt") + "'," + Session["EmpId"] + "," + Session["branch_id"] + "," + tabClient.Rows[0][0] + ")", sqlcon);
         com.ExecuteNonQuery();
         //to insert invoice 
 
@@ -221,7 +235,7 @@ public partial class Sales_process : System.Web.UI.UserControl
 
     protected void TetOilType_SelectedIndexChanged(object sender, EventArgs e)
     {
-        SqlDataAdapter adb = new SqlDataAdapter("select weight from oil_of_branch where id_oil = " + TetOilType.SelectedValue+" ; ", sqlcon);
+        SqlDataAdapter adb = new SqlDataAdapter("select weight from oil_of_branch where id_oil = " + TetOilType.SelectedValue+ " and id_branch = "+ Session["branch_id"] + " ; ", sqlcon);
         DataTable tab = new DataTable();
         adb.Fill(tab);
         if (tab.Rows.Count == 0)
@@ -244,7 +258,7 @@ public partial class Sales_process : System.Web.UI.UserControl
 
 
 
-        SqlDataAdapter adb = new SqlDataAdapter("select CountOfBottle from bottleOfBranch where bottleId = " + txtBottleType.SelectedValue + " ; ", sqlcon);
+        SqlDataAdapter adb = new SqlDataAdapter("select CountOfBottle from bottleOfBranch where bottleId = " + txtBottleType.SelectedValue + " and BranchId = "+ Session["branch_id"] + "; ", sqlcon);
         DataTable tab = new DataTable();
         adb.Fill(tab);
         if (tab.Rows.Count == 0)

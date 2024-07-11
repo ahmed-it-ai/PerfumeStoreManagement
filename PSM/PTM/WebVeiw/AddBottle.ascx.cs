@@ -10,11 +10,11 @@ using System.Data.SqlClient;
 
 public partial class WebVeiw_AddBottle : System.Web.UI.UserControl
 {
-    SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|Database.mdf;Integrated Security=True");
+    SqlConnection sqlcon = new SqlConnection(@"workstation id=PTMDataBase.mssql.somee.com;packet size=4096;user id=ahmedZamlkawy_SQLLogin_1;pwd=aww4jpggwh;data source=PTMDataBase.mssql.somee.com;persist security info=False;initial catalog=PTMDataBase;TrustServerCertificate=True");
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        SqlDataAdapter adpbottleOfBranch = new SqlDataAdapter("select * from bottleOfBranch where BranchId = " + Session["branch_id"] + ";", sqlcon);
+        SqlDataAdapter adpbottleOfBranch = new SqlDataAdapter("select bottleOfBranch.CountOfBottle , bottle.name   from bottle,bottleOfBranch  where bottleOfBranch.BranchId = " + Session["branch_id"] + " and bottleOfBranch.bottleId=bottle.Id ;", sqlcon);
         DataTable tabbottleOfBranch = new DataTable();
         adpbottleOfBranch.Fill(tabbottleOfBranch);
         GridViewBottle.DataSource = tabbottleOfBranch;
@@ -26,7 +26,7 @@ public partial class WebVeiw_AddBottle : System.Web.UI.UserControl
 
         sqlcon.Open();
 
-        SqlDataAdapter adpbottle = new SqlDataAdapter("select Id from bottle where Name = '" + TextBottleName.Text + "'; ", sqlcon);
+        SqlDataAdapter adpbottle = new SqlDataAdapter("select Id from bottle where Name = N'" + TextBottleName.Text + "'; ", sqlcon);
         DataTable tabbottle = new DataTable();
         adpbottle.Fill(tabbottle);
         int bottle = (int)tabbottle.Rows[0][0];
@@ -39,4 +39,6 @@ public partial class WebVeiw_AddBottle : System.Web.UI.UserControl
 
 
     }
+
+ 
 }

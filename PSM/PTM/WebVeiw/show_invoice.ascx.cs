@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 public partial class show_invoice : System.Web.UI.UserControl
 {
 
-    SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|Database.mdf;Integrated Security=True");
+    SqlConnection sqlcon = new SqlConnection(@"workstation id=PTMDataBase.mssql.somee.com;packet size=4096;user id=ahmedZamlkawy_SQLLogin_1;pwd=aww4jpggwh;data source=PTMDataBase.mssql.somee.com;persist security info=False;initial catalog=PTMDataBase;TrustServerCertificate=True");
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -23,11 +23,10 @@ public partial class show_invoice : System.Web.UI.UserControl
 
     
 
-
     protected void Button4_Click(object sender, EventArgs e)
     {
-        
-        SqlDataAdapter adpinvoice = new SqlDataAdapter("select invoice.Id, invoice.TotaleCash ,invoice.DateInvoice ,employee.Name ,client.clientName , client.phone  from invoice ,employee ,client  where invoice.seller_id = employee.Id   and  invoice.client_id = client.Id and DateInvoice = '" + TextBoxDatetime.Text + "';", sqlcon);
+        DateTime time = DateTime.Parse( TextBoxDatetime.Text);
+        SqlDataAdapter adpinvoice = new SqlDataAdapter("select invoice.Id, invoice.TotaleCash ,invoice.DateInvoice ,employee.Name ,client.clientName , client.phone  from invoice ,employee ,client  where invoice.seller_id = employee.Id and invoice.bransh_id = "+ Session["branch_id"] + "  and  invoice.client_id = client.Id and DateInvoice = '" + time.ToString("d") + "';", sqlcon);
         DataTable tabinvoce = new DataTable();
         adpinvoice.Fill(tabinvoce);
         GridViewinvoice.DataSource = tabinvoce;
@@ -37,7 +36,7 @@ public partial class show_invoice : System.Web.UI.UserControl
     protected void Button3_Click(object sender, EventArgs e)
     {
 
-        SqlDataAdapter adpinvoice = new SqlDataAdapter("select  invoice.Id, invoice.TotaleCash , invoice.DateInvoice , employee.Name ,client.clientName ,  client.phone   from invoice  , employee , client   where invoice.seller_id =  employee.Id and  invoice.client_id = client.Id ;", sqlcon);
+        SqlDataAdapter adpinvoice = new SqlDataAdapter("select  invoice.Id, invoice.TotaleCash , invoice.DateInvoice , employee.Name ,client.clientName ,  client.phone   from invoice  , employee , client   where invoice.seller_id =  employee.Id and  invoice.client_id = client.Id invoice.bransh_id = " + Session["branch_id"] + ";", sqlcon);
         DataTable tabinvoce = new DataTable();
         adpinvoice.Fill(tabinvoce);
         GridViewinvoice.DataSource = tabinvoce;

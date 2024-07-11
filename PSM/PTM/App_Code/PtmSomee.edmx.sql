@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/21/2023 13:46:52
--- Generated from EDMX file: C:\Users\cw\Desktop\PTM\PTM\PTM\App_Code\Model.edmx
+-- Date Created: 03/16/2024 15:04:52
+-- Generated from EDMX file: E:\AHMED\المعهد\مشروع المعهد\PTM\PTM\PTM\App_Code\PtmSomee.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [Database];
+USE [PTMDataBase];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -22,9 +22,6 @@ IF OBJECT_ID(N'[dbo].[FK_bottle_ToTable]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_bottleOfBranch_ToTable]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[bottleOfBranch] DROP CONSTRAINT [FK_bottleOfBranch_ToTable];
-GO
-IF OBJECT_ID(N'[dbo].[FK_branch_ToTable]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[branch] DROP CONSTRAINT [FK_branch_ToTable];
 GO
 IF OBJECT_ID(N'[dbo].[FK_employee_ToTable]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[employee] DROP CONSTRAINT [FK_employee_ToTable];
@@ -90,16 +87,16 @@ GO
 -- Creating all tables
 -- --------------------------------------------------
 
--- Creating table 'bottle'
-CREATE TABLE [dbo].[bottle] (
+-- Creating table 'bottles'
+CREATE TABLE [dbo].[bottles] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [name] nvarchar(18)  NULL,
     [price] int  NULL
 );
 GO
 
--- Creating table 'bottleOfBranch'
-CREATE TABLE [dbo].[bottleOfBranch] (
+-- Creating table 'bottleOfBranches'
+CREATE TABLE [dbo].[bottleOfBranches] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [CountOfBottle] nchar(18)  NULL,
     [bottleId] int  NULL,
@@ -107,25 +104,24 @@ CREATE TABLE [dbo].[bottleOfBranch] (
 );
 GO
 
--- Creating table 'branch'
-CREATE TABLE [dbo].[branch] (
+-- Creating table 'branches'
+CREATE TABLE [dbo].[branches] (
     [Id] int  NOT NULL,
-    [Name] nchar(18)  NULL,
-    [manager] int  NULL
+    [Name] nchar(18)  NULL
 );
 GO
 
--- Creating table 'client'
-CREATE TABLE [dbo].[client] (
-    [Id] int  NOT NULL,
-    [Name_] nchar(15)  NULL,
+-- Creating table 'clients'
+CREATE TABLE [dbo].[clients] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [clientName] nchar(15)  NULL,
     [phone] nchar(11)  NULL
 );
 GO
 
--- Creating table 'employee'
-CREATE TABLE [dbo].[employee] (
-    [Id] int  NOT NULL,
+-- Creating table 'employees'
+CREATE TABLE [dbo].[employees] (
+    [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nchar(18)  NULL,
     [jop_name] nchar(18)  NULL,
     [start_Date] datetime  NULL,
@@ -136,8 +132,8 @@ CREATE TABLE [dbo].[employee] (
 );
 GO
 
--- Creating table 'invoice'
-CREATE TABLE [dbo].[invoice] (
+-- Creating table 'invoices'
+CREATE TABLE [dbo].[invoices] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [TotaleCash] int  NULL,
     [DateInvoice] datetime  NULL,
@@ -147,10 +143,10 @@ CREATE TABLE [dbo].[invoice] (
 );
 GO
 
--- Creating table 'oil'
-CREATE TABLE [dbo].[oil] (
+-- Creating table 'oils'
+CREATE TABLE [dbo].[oils] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Name_] nchar(18)  NULL,
+    [name] nchar(18)  NULL,
     [price] int  NULL
 );
 GO
@@ -179,45 +175,45 @@ GO
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
 
--- Creating primary key on [Id] in table 'bottle'
-ALTER TABLE [dbo].[bottle]
-ADD CONSTRAINT [PK_bottle]
+-- Creating primary key on [Id] in table 'bottles'
+ALTER TABLE [dbo].[bottles]
+ADD CONSTRAINT [PK_bottles]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'bottleOfBranch'
-ALTER TABLE [dbo].[bottleOfBranch]
-ADD CONSTRAINT [PK_bottleOfBranch]
+-- Creating primary key on [Id] in table 'bottleOfBranches'
+ALTER TABLE [dbo].[bottleOfBranches]
+ADD CONSTRAINT [PK_bottleOfBranches]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'branch'
-ALTER TABLE [dbo].[branch]
-ADD CONSTRAINT [PK_branch]
+-- Creating primary key on [Id] in table 'branches'
+ALTER TABLE [dbo].[branches]
+ADD CONSTRAINT [PK_branches]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'client'
-ALTER TABLE [dbo].[client]
-ADD CONSTRAINT [PK_client]
+-- Creating primary key on [Id] in table 'clients'
+ALTER TABLE [dbo].[clients]
+ADD CONSTRAINT [PK_clients]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'employee'
-ALTER TABLE [dbo].[employee]
-ADD CONSTRAINT [PK_employee]
+-- Creating primary key on [Id] in table 'employees'
+ALTER TABLE [dbo].[employees]
+ADD CONSTRAINT [PK_employees]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'invoice'
-ALTER TABLE [dbo].[invoice]
-ADD CONSTRAINT [PK_invoice]
+-- Creating primary key on [Id] in table 'invoices'
+ALTER TABLE [dbo].[invoices]
+ADD CONSTRAINT [PK_invoices]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'oil'
-ALTER TABLE [dbo].[oil]
-ADD CONSTRAINT [PK_oil]
+-- Creating primary key on [Id] in table 'oils'
+ALTER TABLE [dbo].[oils]
+ADD CONSTRAINT [PK_oils]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -237,33 +233,33 @@ GO
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [bottleId] in table 'bottleOfBranch'
-ALTER TABLE [dbo].[bottleOfBranch]
+-- Creating foreign key on [bottleId] in table 'bottleOfBranches'
+ALTER TABLE [dbo].[bottleOfBranches]
 ADD CONSTRAINT [FK_bottleOfBranch_ToTable]
     FOREIGN KEY ([bottleId])
-    REFERENCES [dbo].[bottle]
+    REFERENCES [dbo].[bottles]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_bottleOfBranch_ToTable'
 CREATE INDEX [IX_FK_bottleOfBranch_ToTable]
-ON [dbo].[bottleOfBranch]
+ON [dbo].[bottleOfBranches]
     ([bottleId]);
 GO
 
--- Creating foreign key on [BranchId] in table 'bottleOfBranch'
-ALTER TABLE [dbo].[bottleOfBranch]
+-- Creating foreign key on [BranchId] in table 'bottleOfBranches'
+ALTER TABLE [dbo].[bottleOfBranches]
 ADD CONSTRAINT [FK_bottle_ToTable]
     FOREIGN KEY ([BranchId])
-    REFERENCES [dbo].[branch]
+    REFERENCES [dbo].[branches]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_bottle_ToTable'
 CREATE INDEX [IX_FK_bottle_ToTable]
-ON [dbo].[bottleOfBranch]
+ON [dbo].[bottleOfBranches]
     ([BranchId]);
 GO
 
@@ -271,7 +267,7 @@ GO
 ALTER TABLE [dbo].[pay_process]
 ADD CONSTRAINT [FK_pay_process_ToTable_1]
     FOREIGN KEY ([bottle_id])
-    REFERENCES [dbo].[bottleOfBranch]
+    REFERENCES [dbo].[bottleOfBranches]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
@@ -282,48 +278,33 @@ ON [dbo].[pay_process]
     ([bottle_id]);
 GO
 
--- Creating foreign key on [manager] in table 'branch'
-ALTER TABLE [dbo].[branch]
-ADD CONSTRAINT [FK_branch_ToTable]
-    FOREIGN KEY ([manager])
-    REFERENCES [dbo].[employee]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_branch_ToTable'
-CREATE INDEX [IX_FK_branch_ToTable]
-ON [dbo].[branch]
-    ([manager]);
-GO
-
--- Creating foreign key on [branch_id] in table 'employee'
-ALTER TABLE [dbo].[employee]
+-- Creating foreign key on [branch_id] in table 'employees'
+ALTER TABLE [dbo].[employees]
 ADD CONSTRAINT [FK_employee_ToTable]
     FOREIGN KEY ([branch_id])
-    REFERENCES [dbo].[branch]
+    REFERENCES [dbo].[branches]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_employee_ToTable'
 CREATE INDEX [IX_FK_employee_ToTable]
-ON [dbo].[employee]
+ON [dbo].[employees]
     ([branch_id]);
 GO
 
--- Creating foreign key on [bransh_id] in table 'invoice'
-ALTER TABLE [dbo].[invoice]
+-- Creating foreign key on [bransh_id] in table 'invoices'
+ALTER TABLE [dbo].[invoices]
 ADD CONSTRAINT [FK_invoice_ToTable_1]
     FOREIGN KEY ([bransh_id])
-    REFERENCES [dbo].[branch]
+    REFERENCES [dbo].[branches]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_invoice_ToTable_1'
 CREATE INDEX [IX_FK_invoice_ToTable_1]
-ON [dbo].[invoice]
+ON [dbo].[invoices]
     ([bransh_id]);
 GO
 
@@ -331,7 +312,7 @@ GO
 ALTER TABLE [dbo].[oil_of_branch]
 ADD CONSTRAINT [FK_oil_of_branch_ToTable]
     FOREIGN KEY ([id_branch])
-    REFERENCES [dbo].[branch]
+    REFERENCES [dbo].[branches]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
@@ -342,33 +323,33 @@ ON [dbo].[oil_of_branch]
     ([id_branch]);
 GO
 
--- Creating foreign key on [client_id] in table 'invoice'
-ALTER TABLE [dbo].[invoice]
+-- Creating foreign key on [client_id] in table 'invoices'
+ALTER TABLE [dbo].[invoices]
 ADD CONSTRAINT [FK_invoice_ToTable_2]
     FOREIGN KEY ([client_id])
-    REFERENCES [dbo].[client]
+    REFERENCES [dbo].[clients]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_invoice_ToTable_2'
 CREATE INDEX [IX_FK_invoice_ToTable_2]
-ON [dbo].[invoice]
+ON [dbo].[invoices]
     ([client_id]);
 GO
 
--- Creating foreign key on [seller_id] in table 'invoice'
-ALTER TABLE [dbo].[invoice]
+-- Creating foreign key on [seller_id] in table 'invoices'
+ALTER TABLE [dbo].[invoices]
 ADD CONSTRAINT [FK_invoice_ToTable]
     FOREIGN KEY ([seller_id])
-    REFERENCES [dbo].[employee]
+    REFERENCES [dbo].[employees]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_invoice_ToTable'
 CREATE INDEX [IX_FK_invoice_ToTable]
-ON [dbo].[invoice]
+ON [dbo].[invoices]
     ([seller_id]);
 GO
 
@@ -376,7 +357,7 @@ GO
 ALTER TABLE [dbo].[pay_process]
 ADD CONSTRAINT [FK_pay_process_ToTable]
     FOREIGN KEY ([invoice_id])
-    REFERENCES [dbo].[invoice]
+    REFERENCES [dbo].[invoices]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
@@ -391,7 +372,7 @@ GO
 ALTER TABLE [dbo].[oil_of_branch]
 ADD CONSTRAINT [FK_oil_of_branch_ToTable_1]
     FOREIGN KEY ([id_oil])
-    REFERENCES [dbo].[oil]
+    REFERENCES [dbo].[oils]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO

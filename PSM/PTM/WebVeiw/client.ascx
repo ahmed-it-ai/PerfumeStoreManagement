@@ -19,7 +19,7 @@
         .auto-style29 {
         text-align: center;
         height: 35px;
-        width: 564px;
+        width: 507px;
     }
         .auto-style18 {
         text-align: center;
@@ -58,12 +58,13 @@
                         <asp:Button ID="Button3" runat="server" BackColor="#AAFFFF" BorderStyle="None" OnClick="Button3_Click" Text="Add New client" />
                     </td>
                     <td class="auto-style29">
-                        <asp:Label ID="Labelc1" runat="server" ForeColor="#AAFFFF" Text="Name:" CssClass="subtextsamp"></asp:Label>
+                        <asp:Label ID="Labelc1" runat="server" ForeColor="#AAFFFF" Text="Name" CssClass="subtextsamp"></asp:Label>
+                        <br />
                         <asp:TextBox ID="TextName" runat="server" BackColor="#AAFFFF"></asp:TextBox>
                     </td>
                     <td class="auto-style18">
-                        <asp:Label ID="Labelc2" runat="server" ForeColor="#AAFFFF" Text="phone : " CssClass="subtextsamp"></asp:Label>
-                        <asp:TextBox ID="Textphone" runat="server" BackColor="#AAFFFF"></asp:TextBox>
+                        <asp:Label ID="Labelc2" runat="server" ForeColor="#AAFFFF" Text="phone" CssClass="subtextsamp"></asp:Label>
+                        <asp:TextBox ID="Textphone" runat="server" BackColor="#AAFFFF" Width="145px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

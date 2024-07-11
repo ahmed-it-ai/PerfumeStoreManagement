@@ -153,7 +153,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style12">
-                        <asp:Label ID="Label2" runat="server" Text="Email" ForeColor="#AAFFFF"></asp:Label>
+                        <asp:Label ID="Label2" runat="server" Text="User" ForeColor="#AAFFFF"></asp:Label>
                     </td>
                     <td class="auto-style13">
                         <asp:TextBox ID="Textuser" runat="server"></asp:TextBox>
@@ -164,7 +164,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style9">
-                        <asp:Label ID="Label3" runat="server" Text="passWord" ForeColor="#AAFFFF"></asp:Label>
+                        <asp:Label ID="Label3" runat="server" Text="Password" ForeColor="#AAFFFF"></asp:Label>
                     </td>
                     <td class="auto-style10">
                         <asp:TextBox ID="TextPass" runat="server" TextMode="Password"></asp:TextBox>

@@ -5,8 +5,6 @@
     <style type="text/css">
 
 
-
-        
         body{
 		   margin: 0;
 		   padding: 0;
@@ -190,6 +188,7 @@
             text-align: center;
             height: 29px;
         }
+    .nav-link.disabled{color:#6c757d;pointer-events:none;cursor:default}.nav-link{transition:none}.nav-link{display:block;padding:.5rem 1rem;color:#0d6efd;text-decoration:none;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out}a{color:#0d6efd;text-decoration:underline}*,::after,::before{box-sizing:border-box}
     </style>
 
 
@@ -275,7 +274,7 @@
                     <td class="auto-style2"><asp:Label ID="labelCustomerName0" runat="server" ForeColor="#AAFFFF" Text="Total Cash"></asp:Label>
                     </td>
                     <td class="auto-style2">
-                        <asp:TextBox ID="TextTotalCash" runat="server" BackColor="#AAFFFF">0</asp:TextBox>
+                        <asp:TextBox ID="TextTotalCash" runat="server" BackColor="#AAFFFF" ReadOnly="True">0</asp:TextBox>
                     </td>
                 </tr>
                 <tr>
