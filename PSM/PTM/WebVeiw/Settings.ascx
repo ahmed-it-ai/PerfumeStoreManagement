@@ -85,7 +85,7 @@
                         <asp:TextBox ID="txtNewBranch" runat="server" BackColor="#AAFFFF"  MaxLength="17"></asp:TextBox>
                     </td>
                     <td class="auto-style18">
-                        <asp:Label ID="Label1" runat="server" Text="ادخل اسم الفرع "></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text="ادخل اسم الفرع " CssClass="auto-style30" ForeColor="#CC0000" Visible="False"></asp:Label>
                     </td>
                 </tr>
             </table>

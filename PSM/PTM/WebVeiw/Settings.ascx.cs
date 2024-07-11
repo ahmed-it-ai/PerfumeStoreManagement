@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 public partial class WebVeiw_Settings : System.Web.UI.UserControl
 {
-    SqlConnection sqlcon = new SqlConnection(@"workstation id=PTMDataBase.mssql.somee.com;packet size=4096;user id=ahmedZamlkawy_SQLLogin_1;pwd=aww4jpggwh;data source=PTMDataBase.mssql.somee.com;persist security info=False;initial catalog=PTMDataBase;TrustServerCertificate=True");
+    SqlConnection sqlcon = new SqlConnection(sqlsrt.ssqlsrt());
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -37,19 +37,18 @@ public partial class WebVeiw_Settings : System.Web.UI.UserControl
 
     protected void BtnAddNewBranch_Click(object sender, EventArgs e)
     {
+        if(txtNewBranch.Text == null) { Label1.Visible = true; } 
+        else
+        {
+            SqlDataAdapter adb = new SqlDataAdapter("select  max(id)+1  from branch ; ", sqlcon);
+            DataTable tabbranch = new DataTable();
+            adb.Fill(tabbranch);
 
-
-        SqlDataAdapter adb = new SqlDataAdapter("select  max(id)+1  from branch ; ", sqlcon);
-        DataTable tabbranch = new DataTable();
-        adb.Fill(tabbranch);
-
-        sqlcon.Open();
-        SqlCommand ComAddBranch = new SqlCommand("insert into branch values ("+ tabbranch.Rows[0][0].ToString() +",'"+ txtNewBranch.Text +"')", sqlcon);
-        ComAddBranch.ExecuteNonQuery();
-        sqlcon.Close();
-        txtNewBranch.Text = "";
-
-
-
+            sqlcon.Open();
+            SqlCommand ComAddBranch = new SqlCommand("insert into branch values (" + tabbranch.Rows[0][0].ToString() + ",'" + txtNewBranch.Text + "')", sqlcon);
+            ComAddBranch.ExecuteNonQuery();
+            sqlcon.Close();
+            txtNewBranch.Text = null;
+        }
     }
 }

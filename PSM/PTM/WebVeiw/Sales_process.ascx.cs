@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 public partial class Sales_process : System.Web.UI.UserControl
 {
-    SqlConnection sqlcon = new SqlConnection(@"workstation id=PTMDataBase.mssql.somee.com;packet size=4096;user id=ahmedZamlkawy_SQLLogin_1;pwd=aww4jpggwh;data source=PTMDataBase.mssql.somee.com;persist security info=False;initial catalog=PTMDataBase;TrustServerCertificate=True");
+    SqlConnection sqlcon = new SqlConnection(sqlsrt.ssqlsrt());
     protected void Page_Load(object sender, EventArgs e)
     {
 

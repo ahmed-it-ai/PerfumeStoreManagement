@@ -18,6 +18,11 @@
 
 
 
+<%@ Register src="WebVeiw/HR.ascx" tagname="HR" tagprefix="uc5" %>
+
+
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -56,8 +61,13 @@
                     <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="far fa-flask-potion"></i> <asp:Button ID="Button2" runat="server"  Text="oil" class="" BackColor="#001E3D" BorderStyle="None" ForeColor="White" OnClick="Button2_Click"  /></a></li>
                     <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="fad fa-users"></i> <asp:Button ID="Button6" runat="server"  Text="client" class="" BackColor="#001E3D" BorderStyle="None" ForeColor="White" OnClick="Button6_Click"  /></a></li>
                     <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="fad fa-analytics"></i> <asp:Button ID="Button7" runat="server"  Text="Analytics" BackColor="#001E3D" BorderStyle="None" ForeColor="White" OnClick="Button7_Click" /></a></li>
-                    <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="far fa-cogs"></i> <asp:Button ID="BtnSettings" runat="server"  Text="Settings" BackColor="#001E3D" BorderStyle="None" ForeColor="White" OnClick="BtnSettings_Click" /></a></li>
-                    <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-sign-out-alt" style="  color:red"  ></i>  <asp:Button ID="Button5" runat="server"  Text="logout" BackColor="#001E3D" BorderStyle="None" ForeColor="Red" OnClick="Button5_Click" /></a></li>
+                    <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="fad fa-user-tie"></i> <asp:Button ID="btnHR" runat="server"  Text="HR" BackColor="#001E3D" BorderStyle="None" ForeColor="White" OnClick="btnHR_Click" /></a></li>
+                    <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="far fa-cogs"></i>
+                        <asp:Button ID="BtnSettings" runat="server"  Text="Settings" BackColor="#001E3D" BorderStyle="None" ForeColor="White" OnClick="BtnSettings_Click" />
+                        </a></li>
+                    <li><a href="" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-sign-out-alt" style="  color:red"  ></i>
+                        <asp:Button ID="Button5" runat="server"  Text="logout" BackColor="#001E3D" BorderStyle="None" ForeColor="Red" OnClick="Button5_Click" />
+                        </a></li>
                     
 
                 </ul>
@@ -136,6 +146,8 @@
                 </nav>
 
                 <div class="dashboard-content px-3 pt-4">
+                        
+                    <uc5:HR ID="HR1" runat="server" Visible="False" />
                         
                     <uc4:analysis ID="analysis1" runat="server" Visible="False" />
                         

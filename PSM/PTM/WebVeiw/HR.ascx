@@ -1,5 +1,6 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="analysis.ascx.cs" Inherits="WebVeiw_analysis" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="HR.ascx.cs" Inherits="WebVeiw_HR" %>
 <style type="text/css">
+
 
 
 
@@ -44,6 +45,9 @@
 
 
 		*{box-sizing:border-box}
+        .auto-style28 {
+            margin-left: 61px;
+        }
         </style>
     <div>
 
@@ -52,7 +56,7 @@
                     <td class="auto-style17">
                         &nbsp;</td>
                     <td class="auto-style29">
-                        <asp:Label ID="Label3" runat="server" ForeColor="#AAFFFF" Text="Analysis" CssClass="subtextsamp"></asp:Label>
+                        <asp:Label ID="Label3" runat="server" ForeColor="#AAFFFF" Text="HR" CssClass="subtextsamp"></asp:Label>
                     </td>
                     <td class="auto-style18">
                         &nbsp;</td>
@@ -61,7 +65,20 @@
                     <td class="auto-style17">
                         &nbsp;</td>
                     <td class="auto-style29">
-                        &nbsp;</td>
+        <asp:GridView ID="GridViewOil" runat="server" CellPadding="4" CssClass="auto-style28" ForeColor="#333333" GridLines="None" Width="463px">
+            <AlternatingRowStyle BackColor="White" />
+            <EditRowStyle BackColor="#2461BF" />
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB" />
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+        </asp:GridView>
+                    </td>
                     <td class="auto-style18">
                         &nbsp;</td>
                 </tr>
@@ -69,6 +86,7 @@
 
         </div>
     
+
 
 
 

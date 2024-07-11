@@ -40,6 +40,7 @@ public partial class ceo : System.Web.UI.Page
         client.Visible = false;
         AddBottle1.Visible = false;
         Settings1.Visible = false;
+        HR1.Visible = false;        
     }
     protected void Button3_Click1(object sender, EventArgs e)
     {
@@ -107,5 +108,12 @@ public partial class ceo : System.Web.UI.Page
     {
         WUC_visible_hide();
         Settings1.Visible = true;
+    }
+
+    protected void btnHR_Click(object sender, EventArgs e)
+    {
+        WUC_visible_hide();
+        HR1.Visible = true;
+
     }
 }
