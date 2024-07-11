@@ -1,18 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="seller.aspx.cs" Inherits="seller" %>
-
 <%@ Register Src="~/WebVeiw/Sales_process.ascx" TagPrefix="uc1" TagName="Sales_process" %>
 <%@ Register Src="~/WebVeiw/show_invoice.ascx" TagPrefix="uc1" TagName="show_invoice" %>
 <%@ Register Src="~/WebVeiw/bottle.ascx" TagPrefix="uc1" TagName="bottle" %>
 <%@ Register Src="~/WebVeiw/oil.ascx" TagPrefix="uc1" TagName="oil" %>
 <%@ Register Src="~/WebVeiw/client.ascx" TagPrefix="uc1" TagName="client" %>
-
-
-
-
-
-
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -65,12 +56,7 @@
                         </div>
 
                         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" >
-                                                   
-                    
-
-
-
-
+               
                             <nav class="navbar bg-dark  border-body" data-bs-theme="dark">
                                 <div class="container-fluid" data-bs-theme="dark" >
 
@@ -92,8 +78,6 @@
                                             </li>
                                         </ul>
                                         <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
-
-
                                             <li class="nav-item">
                                                 <a class="nav-link disabled" aria-disabled="true"><asp:Label runat="server" Text="User Name:" ID="LabelEmpName"></asp:Label></a>
                                             </li>
@@ -113,34 +97,21 @@
                                 </div>
                             </nav>
 
-
-
-
-
-
                         </div>
                     </div>
                 </nav>
 
-                <div class="dashboard-content px-3 pt-4">
-                        
+                <div class="dashboard-content px-3 pt-4">                        
                     <uc1:Sales_process runat="server" ID="Sales_process1" Visible="False" />
                     <uc1:show_invoice runat="server" id="show_invoice" Visible="False" />
-                    <uc1:bottle runat="server" ID="bottle" Visible="False" />
+                    <uc1:bottle runat="server" ID="bottle" Visible="True" />
                     <uc1:oil runat="server" ID="oil" Visible="False" />
                     <uc1:client runat="server" ID="client" Visible="False" />
-
-
-
                 </div>
             </div>
         </div>
-
-
 /        <script src="style/jquery.min.js"></script>
-
     </form>
-
 </body>
 </html>
 

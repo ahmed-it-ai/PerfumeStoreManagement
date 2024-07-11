@@ -1,11 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="client.ascx.cs" Inherits="WebVeiw_client" %>
 <style type="text/css">
-
-
-
-
-
-
         .auto-style1 {
             width: 100%;
             border-style: solid;
@@ -28,9 +22,7 @@
     }
         .auto-style28 {
             margin-left: 61px;
-        }
-    
-
+        }   
         .subtextsamp {
 		  text-align: center;
 		  margin-top:2%;
@@ -43,15 +35,8 @@
 		  letter-spacing: 0.5em;
 		  text-align: center;
 		}
-
-
-
 		</style>
-
-
-
         <div>
-
             <table class="auto-style1">
                 <tr>
                     <td class="auto-style17">
@@ -112,10 +97,4 @@
                         &nbsp;</td>
                 </tr>
             </table>
-
-        </div>
-    
-
-
-
-
+        </div>   

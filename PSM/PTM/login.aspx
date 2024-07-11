@@ -1,13 +1,24 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="login" %>
-
-
 <!DOCTYPE html>
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
     <style type="text/css">
+        *{
+            font-size: 2vw;
+        }
+        input {
+              border:none;
+              outline:none;  
+              vertical-align:middle;
+              position:relative;
+              border-radius:22px;
+              font-size: 1.5vw;
+              height:2.5vw;
+              border: none;   
+              padding: 0px 20px;
+
+        }
         .auto-style1 {
             width: 91%;
             height: 176px;
@@ -36,7 +47,7 @@
 		  margin-top:12%;
 		  font-family: 'Orbitron', sans-serif;
 		  font-weight: 100;
-		  font-size: 40px;
+		  font-size: 60px;
 		  color: #aff;
 		  text-shadow: 5px 5px 7px #477;
 		  text-transform: uppercase;
@@ -44,22 +55,17 @@
 		  text-align: center;
 		  animation: glitch-2 3s 3.02s infinite;
 		}
-
-
         .subtext {
 		  text-align: center;
 		  margin-top:2%;
 		  font-family: 'Orbitron', sans-serif;
 		  font-weight: 100;
 		  font-size: 15px;
-		  color: #aff;
-		  
+		  color: #aff;		  
 		  text-transform: uppercase;
 		  letter-spacing: 0.3em;
 		  text-align: center;
 		}
-
-
         .subtextsamp {
 		  text-align: center;
 		  margin-top:2%;
@@ -72,9 +78,6 @@
 		  letter-spacing: 0.5em;
 		  text-align: center;
 		}
-
-
-
 		@keyframes glitch-2 {
 		  10%{
 		    transform: rotateX(10deg) skewX(70deg);
@@ -82,25 +85,19 @@
 		  20%{
 		    transform: rotateX(0deg) skewX(0deg);
 		  }
-		}	    
-		
+		}	    		
 		.pru{
 		  text-align: center;
 		  margin-top:100px; 
 		  color: #8bb;
 		  font-size: 50px;	            
 		}
-
-
         .prulogin{
 		  text-align: center;
 		  margin-top:100px; 
 		  color: #8bb;
 		  font-size: 20px;	            
 		}
-
-
-
         @media only screen and (max-width: 770px) {
             .subtitle {
                 margin-top: 10%;
@@ -109,11 +106,7 @@
                 color: #aff;
                 text-shadow: 5px 5px 7px #477;
             }
-
-
             }
-
-
         .auto-style9 {
             width: 261px;
             height: 74px;
@@ -136,12 +129,9 @@
         .auto-style14 {
             height: 67px;
         }
-
-
     </style>
 </head>
 <body>
-
     <h1 class="subtitle">PSM</h1>
     <p class="subtext"  > <samp class="subtextsamp" >P</samp>erfume<samp class="subtextsamp" > S</samp>tore <samp class="subtextsamp" >M</samp>anagement</p>
     <form id="form1" runat="server">
@@ -177,9 +167,8 @@
         </div>
         </div>
         <p class="prulogin" >
-            <asp:Button ID="B1" runat="server" Height="28px" OnClick="Button1_Click" Text="login" Width="200px" BackColor="#AAFFFF" BorderColor="#AAFFFF" BorderStyle="Solid" Font-Names="Arial Black" />
+            <asp:Button ID="B1" runat="server" OnClick="Button1_Click" Text="login" Width="200px" BackColor="#AAFFFF" BorderColor="#AAFFFF" BorderStyle="Solid" Font-Names="Arial Black" />
         </p>
     </form>
     </body>
 </html>
-

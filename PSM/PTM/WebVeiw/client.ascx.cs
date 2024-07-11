@@ -6,26 +6,18 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
-
-
-
 public partial class WebVeiw_client : System.Web.UI.UserControl
 {
-
-
-    SqlConnection sqlcon = new SqlConnection(@"workstation id=PTMDataBase.mssql.somee.com;packet size=4096;user id=ahmedZamlkawy_SQLLogin_1;pwd=aww4jpggwh;data source=PTMDataBase.mssql.somee.com;persist security info=False;initial catalog=PTMDataBase;TrustServerCertificate=True");
-    SqlConnection con = new SqlConnection(@"workstation id=PTMDataBase.mssql.somee.com;packet size=4096;user id=ahmedZamlkawy_SQLLogin_1;pwd=aww4jpggwh;data source=PTMDataBase.mssql.somee.com;persist security info=False;initial catalog=PTMDataBase;TrustServerCertificate=True");
+    SqlConnection sqlcon = new SqlConnection(sqlsrt.ssqlsrt());
+    SqlConnection con = new SqlConnection(sqlsrt.ssqlsrt());
     protected void Page_Load(object sender, EventArgs e)
     {
-
         SqlDataAdapter adpClient = new SqlDataAdapter("select clientName,phone from client ; ", sqlcon);
         DataTable tabClient = new DataTable();
         adpClient.Fill(tabClient);
         GridViewclient.DataSource = tabClient;
         GridViewclient.DataBind();
-
     }
-
     public void selectClient()
     {
         SqlDataAdapter adpClient = new SqlDataAdapter("select clientName , phone  from client ; ", sqlcon);
@@ -33,7 +25,6 @@ public partial class WebVeiw_client : System.Web.UI.UserControl
         adpClient.Fill(tabClient);
         GridViewclient.DataSource = tabClient;
         GridViewclient.DataBind();
-
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
@@ -43,21 +34,17 @@ public partial class WebVeiw_client : System.Web.UI.UserControl
         GridViewclient.DataSource = tabClient;
         GridViewclient.DataBind();
     }
-
     protected void Button2_Click(object sender, EventArgs e)
     {
-
         selectClient();
     }
-
     protected void Button3_Click(object sender, EventArgs e)
     {
         con.Open();
-        SqlCommand comclient = new SqlCommand("insert into client (clientName,phone) values (N'"+ TextName.Text  + " ',"+ Textphone.Text +");", con);
+        SqlCommand comclient = new SqlCommand("insert into client (clientName,phone) values (N'"+ TextName.Text  + " ','"+ Textphone.Text +"');", con);
         comclient.ExecuteNonQuery();
         con.Close();
 
         selectClient();
-
     }
 } 

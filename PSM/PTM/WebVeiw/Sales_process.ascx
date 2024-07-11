@@ -1,10 +1,20 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Sales_process.ascx.cs" Inherits="Sales_process" %>
-
-
-
+<script>
+  function printpage() {
+   var getpanel = document.getElementById("<%= Panel1.ClientID%>");
+   var MainWindow = window.open('', '', 'height=500,width=800');
+   MainWindow.document.write('<html><head><title>Print Page</title>');
+   MainWindow.document.write('</head><body>');
+   MainWindow.document.write(getpanel.innerHTML);
+   MainWindow.document.write('</body></html>');
+   MainWindow.document.close();
+   setTimeout(function () {
+    MainWindow.print();
+   }, 5);
+   return false;
+  }
+</script>
     <style type="text/css">
-
-
         body{
 		   margin: 0;
 		   padding: 0;
@@ -80,11 +90,6 @@
 		  color: #8bb;
 		  font-size: 20px;	            
 		}
-
-
-
-
-
         .auto-style1 {
             width: 100%;
             border-style: solid;
@@ -189,12 +194,13 @@
             height: 29px;
         }
     .nav-link.disabled{color:#6c757d;pointer-events:none;cursor:default}.nav-link{transition:none}.nav-link{display:block;padding:.5rem 1rem;color:#0d6efd;text-decoration:none;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out}a{color:#0d6efd;text-decoration:underline}*,::after,::before{box-sizing:border-box}
+        .auto-style33 {
+            text-align: center;
+            width: 300px;
+            margin-left: 40px;
+        }
     </style>
-
-
-
         <div>
-
             <table class="auto-style1">
                 <tr>
                     <td class="auto-style19">
@@ -222,7 +228,7 @@
                         <asp:Label ID="Label9" runat="server" ForeColor="#AAFFFF" Text="Oil type"></asp:Label>
                     </td>
                     <td class="auto-style11">
-                        <asp:DropDownList ID="TetOilType" runat="server" AutoPostBack="true"  BackColor="#AAFFFF" OnSelectedIndexChanged="TetOilType_SelectedIndexChanged">
+                        <asp:DropDownList ID="TetOilType" runat="server" AutoPostBack="true"  BackColor="#AAFFFF" OnSelectedIndexChanged="TetOilType_SelectedIndexChanged" CssClass="list">
                         </asp:DropDownList>
                     </td>
                     <td class="auto-style2">
@@ -241,8 +247,8 @@
                     <td class="auto-style21">
                         <asp:Label ID="Label10" runat="server" ForeColor="#AAFFFF" Text="Quantity of oil"></asp:Label>
                     </td>
-                    <td class="auto-style11">
-                        <asp:TextBox ID="txtQuanttityOfOil" runat="server" BackColor="#AAFFFF"  MaxLength="3" TextMode="Number"></asp:TextBox>
+                    <td class="auto-style33">
+                        <asp:TextBox ID="txtQuanttityOfOil" runat="server" BackColor="#AAFFFF"  MaxLength="2"></asp:TextBox>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>
@@ -260,7 +266,7 @@
                         <asp:Label ID="Label11" runat="server" ForeColor="#AAFFFF" Text="Bottle type"></asp:Label>
                     </td>
                     <td class="auto-style31">
-                        <asp:DropDownList ID="txtBottleType" runat="server" BackColor="#AAFFFF" OnSelectedIndexChanged="txtBottleType_SelectedIndexChanged" AutoPostBack="True">
+                        <asp:DropDownList ID="txtBottleType" runat="server" BackColor="#AAFFFF" OnSelectedIndexChanged="txtBottleType_SelectedIndexChanged" AutoPostBack="True" CssClass=" list">
                         </asp:DropDownList>
                     </td>
                     <td class="auto-style32">
@@ -297,7 +303,7 @@
                     <td class="auto-style18">
                         &nbsp;</td>
                     <td class="auto-style18">
-                        <asp:Button ID="Button1" runat="server" Height="29px" Text="End sale" Width="105px" BackColor="#AAFFFF" BorderColor="#AAFFFF" BorderStyle="Solid"  Visible="False" OnClick="Button1_Click" />
+                        <asp:Button ID="Button1" runat="server" Text="End sale" BackColor="#AAFFFF" BorderColor="#AAFFFF" BorderStyle="Solid"  Visible="False" OnClick="Button1_Click"/>
                     </td>
                 </tr>
                 <tr>
@@ -318,7 +324,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style18" colspan="2">
-                        <asp:Button ID="Button4" runat="server" BackColor="#FF3300" BorderStyle="Solid"  Text="cancel" OnClick="Button4_Click" style="height: 29px" />
+                        <asp:Button ID="Button4" runat="server" BackColor="#FF3300" BorderStyle="Solid"  Text="cancel" OnClick="Button4_Click"  />
                     </td>
                     <td class="auto-style18">
                         &nbsp;</td>
@@ -328,7 +334,8 @@
                 <tr>
                     <td class="auto-style17">
                         &nbsp;</td>
-                    <td class="auto-style18" colspan="2">
+                    <td class="auto-style18" colspan="2">                        
+                         <asp:Panel ID="Panel1" runat="server">
         <asp:GridView ID="GridView1" runat="server" CellPadding="4" CssClass="auto-style28" ForeColor="#333333" GridLines="None" Width="463px">
             <AlternatingRowStyle BackColor="White" />
             <EditRowStyle BackColor="#2461BF" />
@@ -341,15 +348,19 @@
             <SortedAscendingHeaderStyle BackColor="#6D95E1" />
             <SortedDescendingCellStyle BackColor="#E9EBEF" />
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
-        </asp:GridView>
+        </asp:GridView>                                                    
+   </asp:Panel>
                     </td>
                     <td class="auto-style18">
                         &nbsp;</td>
                 </tr>
+                <tr>
+                    <td class="auto-style17">
+                        &nbsp;</td>
+                    <td class="auto-style18" colspan="2">
+                    </td>                 
+                    <td class="auto-style18">
+                        &nbsp;</td>
+                </tr>
             </table>
-
-        </div>
-    
-
-
-
+        </div>   

@@ -1,11 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="oil.ascx.cs" Inherits="WebVeiw_oil" %>
 <style type="text/css">
-
-
-
-
-
-
         .auto-style1 {
             width: 100%;
             border-style: solid;
@@ -28,15 +22,17 @@
         .auto-style28 {
             margin-left: 61px;
         }
-    </style>
+    *{box-sizing:border-box}    
+        </style>
     <div>
-
             <table class="auto-style1">
                 <tr>
                     <td class="auto-style17">
                         &nbsp;</td>
                     <td class="auto-style29">
-                        &nbsp;</td>
+                        <strong>
+            <asp:Label ID="Label16" runat="server" BorderStyle="None" ForeColor="#AAFFFF" Text="Oil list" Font-Size="X-Large" Height="33px" Width="167px"></asp:Label>
+                        </strong></td>
                     <td class="auto-style18">
                         &nbsp;</td>
                 </tr>
@@ -62,9 +58,4 @@
                         &nbsp;</td>
                 </tr>
             </table>
-
         </div>
-    
-
-
-

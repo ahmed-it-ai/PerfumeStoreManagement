@@ -1,7 +1,9 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="AddBottle.ascx.cs" Inherits="WebVeiw_AddBottle" %>
-<%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="AddOil.ascx.cs" Inherits="WebVeiw_AddOil" %>
+
+
 <script>
   function printpage() {
+
    var getpanel = document.getElementById("<%= Panel1.ClientID%>");
    var MainWindow = window.open('', '', 'height=500,width=800');
    MainWindow.document.write('<html><head><title>Print Page</title>');
@@ -13,26 +15,28 @@
     MainWindow.print();
    }, 5);
    return false;
+
   }
 </script>
-<style type="text/css">       
-        .subtextsamp {
-		  text-align: center;
-		  margin-top:2%;
-		  font-family: 'Orbitron', sans-serif;
-		  font-weight: 100;
-		  font-size: 25px;
-		  color: #aff;
-		  text-shadow: 5px 5px 7px #477;
-		  text-transform: uppercase;
-		  letter-spacing: 0.5em;
-		  text-align: center;
-		}
+
+
+<style type="text/css">
+
+
+
+
 		.auto-style1 {
         width: 100%;
     }
-    .auto-style2 {
+    *{box-sizing:border-box}
+    
+
+        .auto-style2 {
         text-align: center;
+    }
+    .auto-style29 {
+        text-align: center;
+        width: 98px;
     }
     .auto-style3 {
         text-align: center;
@@ -41,14 +45,7 @@
         .auto-style28 {
             margin-left: 61px;
         }
-    .auto-style29 {
-        text-align: center;
-        width: 98px;
-    }
-    *{box-sizing:border-box}
-    
-
-        </style>
+    </style>
 
 <table class="auto-style1">
     <tr>
@@ -64,7 +61,7 @@
     </tr>
     <tr>
         <td class="auto-style3" colspan="2">
-            <asp:Label ID="Label13" runat="server" BorderStyle="None" ForeColor="#AAFFFF" Text="Count Of Bottle"></asp:Label>
+            <asp:Label ID="Label13" runat="server" BorderStyle="None" ForeColor="#AAFFFF" Text="Count Of Oil"></asp:Label>
         </td>
         <td class="auto-style2" colspan="2">
             <asp:TextBox ID="TextCount" runat="server" BackColor="#AAFFFF"></asp:TextBox>
@@ -77,17 +74,21 @@
     </tr>
     <tr>
         <td class="auto-style3" colspan="2">
-            <asp:Label ID="Label14" runat="server" BorderStyle="None" ForeColor="#AAFFFF" Text="Bottle Name "></asp:Label>
+            <asp:Label ID="Label14" runat="server" BorderStyle="None" ForeColor="#AAFFFF" Text="oil Name "></asp:Label>
         &nbsp;</td>
         <td class="auto-style2" colspan="2">
-                        <asp:DropDownList ID="ListOfBottleName" CssClass="list" runat="server"  BackColor="#AAFFFF" OnSelectedIndexChanged="ListBranch_SelectedIndexChanged" AutoPostBack="True">
-                        </asp:DropDownList>
+                        
+            <asp:DropDownList ID="DropDownList1" runat="server" BackColor="#AAFFFF" CssClass="list">
+            </asp:DropDownList>
+                        
         </td>
     </tr>
     <tr>
         <td class="auto-style2">&nbsp;</td>
         <td class="auto-style29" colspan="2">
-            <asp:Button ID="Button5" runat="server" BackColor="#AAFFFF" BorderStyle="None" OnClick="Button5_Click" Text="Add" />
+       
+            <asp:Button ID="Button7" runat="server" BackColor="#AAFFFF" BorderStyle="None" OnClick="Button7_Click" style="height: 25px" Text="ADD" />
+       
         </td>
         <td class="auto-style2">
 
@@ -98,20 +99,11 @@
     </tr>
     <tr>
         <td class="auto-style2">&nbsp;</td>
-        <td class="auto-style29" colspan="2">           
-                <br />
-                <asp:Chart ID="Chart1" runat="server" OnLoad="Chart1_Load">
-                    <series>
-                        <asp:Series Name="Series1">
-                        </asp:Series>                         
-                    </series>
-                    <chartareas>
-                        <asp:ChartArea Name="ChartArea1">
-                        </asp:ChartArea>
-                    </chartareas>
-                </asp:Chart>
-                <br />
-                <br />
+        <td class="auto-style29" colspan="2">
+
+
+            
+
             <asp:Panel ID="Panel1" runat="server">
                 <asp:GridView ID="GridViewBottle" runat="server" CellPadding="4" CssClass="auto-style28" ForeColor="#333333" GridLines="None" Width="463px">
             <AlternatingRowStyle BackColor="White" />
@@ -126,6 +118,7 @@
             <SortedDescendingCellStyle BackColor="#E9EBEF" />
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
+
             </asp:Panel>
         
         </td>
@@ -134,7 +127,11 @@
     <tr>
         <td class="auto-style2">&nbsp;</td>
         <td class="auto-style29" colspan="2">
+
+
             &nbsp;</td>
         <td class="auto-style2">&nbsp;</td>
     </tr>
 </table>
+
+

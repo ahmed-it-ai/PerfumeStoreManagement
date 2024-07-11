@@ -1,20 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="bottle.ascx.cs" Inherits="WebVeiw_bottle" %>
-
-
 <style type="text/css">
-
-
-
-
-
-
         .auto-style1 {
             width: 100%;
             border-style: solid;
             border-width: 1px;
-        }
-        
-
+        }       
         .subtextsamp {
 		  text-align: center;
 		  margin-top:2%;
@@ -27,9 +17,6 @@
 		  letter-spacing: 0.5em;
 		  text-align: center;
 		}
-
-
-
 		.auto-style18 {
             text-align: center;
             height: 35px;
@@ -47,18 +34,17 @@
         height: 35px;
         width: 585px;
     }
-</style>
-
-
-
+*{box-sizing:border-box}   
+        </style>
         <div>
-
             <table class="auto-style1">
                 <tr>
                     <td class="auto-style17">
                         &nbsp;</td>
                     <td class="auto-style29">
-                        &nbsp;</td>
+                        <strong>
+            <asp:Label ID="Label16" runat="server" BorderStyle="None" ForeColor="#AAFFFF" Text="Bottle list" Font-Size="X-Large" Height="33px" Width="167px"></asp:Label>
+                        </strong></td>
                     <td class="auto-style18">
                         &nbsp;</td>
                 </tr>
@@ -84,12 +70,5 @@
                         &nbsp;</td>
                 </tr>
             </table>
-
         </div>
     
-
-
-
-
-
-

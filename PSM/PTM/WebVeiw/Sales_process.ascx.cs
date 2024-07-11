@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
-
+using System.Drawing;
 public partial class Sales_process : System.Web.UI.UserControl
 {
     SqlConnection sqlcon = new SqlConnection(sqlsrt.ssqlsrt());
@@ -21,8 +21,6 @@ public partial class Sales_process : System.Web.UI.UserControl
         {
             if (!Page.IsPostBack)
             {
-
-
                 sqlcon.Open();
                 SqlDataAdapter adp = new SqlDataAdapter("select Name from branch where Id= '" + Session["branch_id"] + "'; ", sqlcon);
                 DataTable tab = new DataTable();
@@ -78,10 +76,7 @@ public partial class Sales_process : System.Web.UI.UserControl
 
         if (Button3.Text == "Start Sale ")
         {
-            Button3.Text += "ADD New Bottle";
-
-
-
+            Button3.Text = "ADD New Bottle";
             SqlDataAdapter adb = new SqlDataAdapter("select id , name from oil ; ", sqlcon);
             DataTable taboildrop = new DataTable();
             adb.Fill(taboildrop);            
@@ -92,7 +87,6 @@ public partial class Sales_process : System.Web.UI.UserControl
             TetOilType.DataBind();
             TetOilType.Visible = true;
             //to fill id from oil table in value field and fill name from oil table in text field 
-
             SqlDataAdapter adbbottledrop = new SqlDataAdapter("select id , name from bottle ; ", sqlcon);
             DataTable tabbottledrop = new DataTable();
             adbbottledrop.Fill(tabbottledrop);
@@ -103,14 +97,9 @@ public partial class Sales_process : System.Web.UI.UserControl
             txtBottleType.DataBind();
             txtBottleType.Visible = true;
             //to fill id from bottle table in value field and fill name from bottle table in text field 
-
             TextCustomerName.Visible = true;
             txtCash.Visible = true;
             txtQuanttityOfOil.Visible = true;
-
-
-
-
         }
         else
         {
@@ -128,7 +117,7 @@ public partial class Sales_process : System.Web.UI.UserControl
                 tab = (DataTable)ViewState["tab"];
             }
 
-            SqlDataAdapter adpOil = new SqlDataAdapter("select price from oil where name = '" + TetOilType.SelectedItem + "'; ", sqlcon);
+            SqlDataAdapter adpOil = new SqlDataAdapter("select price from oil where name = N'" + TetOilType.SelectedItem + "'; ", sqlcon);
             DataTable tabOil = new DataTable();
             adpOil.Fill(tabOil);
             int oilprice = (int)tabOil.Rows[0][0];
@@ -153,9 +142,6 @@ public partial class Sales_process : System.Web.UI.UserControl
             GridView1.DataBind();
         }
     }
-
-    
-
     protected void Button1_Click(object sender, EventArgs e)
     {
          
@@ -190,7 +176,7 @@ public partial class Sales_process : System.Web.UI.UserControl
         {
 
 
-            SqlDataAdapter adpOil = new SqlDataAdapter("select Id from oil where Name = '" + tabgrid.Rows[x][0] + "'; ", sqlcon);
+            SqlDataAdapter adpOil = new SqlDataAdapter("select Id from oil where Name = N'" + tabgrid.Rows[x][0] + "'; ", sqlcon);
             DataTable tabOil = new DataTable();
             adpOil.Fill(tabOil);
             int oil = (int)tabOil.Rows[0][0];
@@ -200,7 +186,7 @@ public partial class Sales_process : System.Web.UI.UserControl
             adpIdOil.Fill(tabIdOil);
             //to get id oil id from oil id 
 
-            SqlDataAdapter adpbottle = new SqlDataAdapter("select Id from bottle where Name = '" + tabgrid.Rows[x][3] + "'; ", sqlcon);
+            SqlDataAdapter adpbottle = new SqlDataAdapter("select Id from bottle where Name = N'" + tabgrid.Rows[x][3] + "'; ", sqlcon);
             DataTable tabbottle = new DataTable();
             adpbottle.Fill(tabbottle);
             int bottle = (int)tabbottle.Rows[0][0];
@@ -218,16 +204,20 @@ public partial class Sales_process : System.Web.UI.UserControl
             int bottle_id = (int)tabIdbottleId.Rows[0][0];
 
             SqlCommand compay = new SqlCommand("insert into pay_process (oil_id,Quantity_of_oil,price,invoice_id,bottle_id) values (" + tabIdOil.Rows[0][0] + "," + Quantity_of_oil + "," + price + "," + invoice_id + "," + bottle_id + ");", sqlcon);
+            SqlCommand comupdBottle = new SqlCommand("update bottleOfBranch set CountOfBottle = CountOfBottle -1 where BranchId = " + Session["branch_id"] + "  and Id = " + bottle_id + " ;", sqlcon);
+            SqlCommand comupdOil = new SqlCommand("update oil_of_branch set weight = weight -" +  txtQuanttityOfOil.Text + " where id = " + tabIdOil.Rows[0][0] + " ;", sqlcon);
+            comupdOil.ExecuteNonQuery();
+            comupdBottle.ExecuteNonQuery();
             compay.ExecuteNonQuery();
-
+            
 
         }
+
+        
         sqlcon.Close();
 
         clearall();
     }
-
-
     protected void Button4_Click(object sender, EventArgs e)
     {
         clearall();
@@ -246,13 +236,24 @@ public partial class Sales_process : System.Web.UI.UserControl
 
         }
         else 
-        {        
-            txtQuanttityOfOil.Text = tab.Rows[0][0].ToString();
+        {
+            if ((int)tab.Rows[0][0] > 99)
+            {
+                txtQuanttityOfOil.Text = "99";
+                txtQuanttityOfOil.ForeColor = Color.Black;
+            } 
+            else
+            {
+                txtQuanttityOfOil.Text = tab.Rows[0][0].ToString();
+                txtQuanttityOfOil.ForeColor = Color.Red;
+            }            
             Label13.Visible = false;
             Button3.Visible = true;
+            txtQuanttityOfOil.MaxLength = 2;
         }
+        
     }
-
+    
     protected void txtBottleType_SelectedIndexChanged(object sender, EventArgs e)
     {
 

@@ -1,13 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="HR.ascx.cs" Inherits="WebVeiw_HR" %>
 <style type="text/css">
-
-
-
-
-
-
-
-
         .auto-style1 {
             width: 100%;
             border-style: solid;
@@ -26,9 +18,7 @@
         .auto-style18 {
             text-align: center;
             height: 35px;
-        }
-        
-
+        }        
         .subtextsamp {
 		  text-align: center;
 		  margin-top:2%;
@@ -63,6 +53,99 @@
                 </tr>
                 <tr>
                     <td class="auto-style17">
+                        <asp:Label ID="Label9" runat="server" ForeColor="#AAFFFF" Text="Name"></asp:Label>
+                    </td>
+                    <td class="auto-style29">
+                        <asp:TextBox ID="txthname" runat="server" BackColor="#AAFFFF"  MaxLength="20"></asp:TextBox>
+                    </td>
+                    <td class="auto-style18">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style17">
+                        <asp:Label ID="Label10" runat="server" ForeColor="#AAFFFF" Text="Jope"></asp:Label>
+                    </td>
+                    <td class="auto-style29">
+                        <asp:DropDownList ID="listjop" runat="server" AutoPostBack="true"  BackColor="#AAFFFF" CssClass="list">
+                            <asp:ListItem Value="seller            "></asp:ListItem>
+                            <asp:ListItem>manager           </asp:ListItem>
+                            <asp:ListItem>ceo               </asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                    <td class="auto-style18">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style17">
+                        <asp:Label ID="Label11" runat="server" ForeColor="#AAFFFF" Text="Date"></asp:Label>
+                    </td>
+                    <td class="auto-style29">
+                        <asp:TextBox ID="Txtdate" runat="server"  TextMode="Date" BackColor="#AAFFFF"></asp:TextBox>
+                    </td>
+                    <td class="auto-style18">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style17">
+                        <asp:Label ID="Label12" runat="server" ForeColor="#AAFFFF" Text="Branch"></asp:Label>
+                    </td>
+                    <td class="auto-style29">
+                        <asp:DropDownList ID="listbranch" runat="server" AutoPostBack="True"  BackColor="#AAFFFF" CssClass="list" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="Id">
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:PTMDataBaseConnectionString %>" SelectCommand="SELECT [Id], [Name] FROM [branch]"></asp:SqlDataSource>
+                    </td>
+                    <td class="auto-style18">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style17">
+                        <asp:Label ID="Label15" runat="server" ForeColor="#AAFFFF" Text="salary"></asp:Label>
+                    </td>
+                    <td class="auto-style29">
+                        <asp:TextBox ID="txtsalary" runat="server" BackColor="#AAFFFF"  MaxLength="3" TextMode="Number"></asp:TextBox>
+                    </td>
+                    <td class="auto-style18">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style17">
+                        <asp:Label ID="Label13" runat="server" ForeColor="#AAFFFF" Text="passworde"></asp:Label>
+                    </td>
+                    <td class="auto-style29">
+                        <asp:TextBox ID="txtpass" runat="server" BackColor="#AAFFFF"  MaxLength="20"></asp:TextBox>
+                    </td>
+                    <td class="auto-style18">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style17">
+                        <asp:Label ID="Label14" runat="server" ForeColor="#AAFFFF" Text="User Name"></asp:Label>
+                    </td>
+                    <td class="auto-style29">
+                        <asp:TextBox ID="txtusername" runat="server" BackColor="#AAFFFF"  MaxLength="20"></asp:TextBox>
+                    </td>
+                    <td class="auto-style18">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style17">
+                        &nbsp;</td>
+                    <td class="auto-style29">
+                        <asp:Button ID="Button3" runat="server" BackColor="#AAFFFF" BorderColor="#AAFFFF" BorderStyle="Solid"  Text="Add" OnClick="Button3_Click" />
+                    </td>
+                    <td class="auto-style18">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style17">
+                        &nbsp;</td>
+                    <td class="auto-style29">
+                        &nbsp;</td>
+                    <td class="auto-style18">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style17">
                         &nbsp;</td>
                     <td class="auto-style29">
         <asp:GridView ID="GridViewOil" runat="server" CellPadding="4" CssClass="auto-style28" ForeColor="#333333" GridLines="None" Width="463px">
@@ -83,11 +166,5 @@
                         &nbsp;</td>
                 </tr>
             </table>
-
         </div>
     
-
-
-
-
-
