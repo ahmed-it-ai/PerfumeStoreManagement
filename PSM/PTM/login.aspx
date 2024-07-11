@@ -1,9 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="login" %>
-
-
 <!DOCTYPE html>
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
@@ -41,8 +37,8 @@
         body{
 		   margin: 0;
 		   padding: 0;
-	       background-color: #000;
-           
+	       background-color: #cccccc;
+           background-image: radial-gradient(#2061A7, #001E3D, #06121F);
            background-repeat: no-repeat;
            background-size: 100% 10000px;
 		}
@@ -59,22 +55,17 @@
 		  text-align: center;
 		  animation: glitch-2 3s 3.02s infinite;
 		}
-
-
         .subtext {
 		  text-align: center;
 		  margin-top:2%;
 		  font-family: 'Orbitron', sans-serif;
 		  font-weight: 100;
 		  font-size: 15px;
-		  color: #aff;
-		  
+		  color: #aff;		  
 		  text-transform: uppercase;
 		  letter-spacing: 0.3em;
 		  text-align: center;
 		}
-
-
         .subtextsamp {
 		  text-align: center;
 		  margin-top:2%;
@@ -87,9 +78,6 @@
 		  letter-spacing: 0.5em;
 		  text-align: center;
 		}
-
-
-
 		@keyframes glitch-2 {
 		  10%{
 		    transform: rotateX(10deg) skewX(70deg);
@@ -97,25 +85,19 @@
 		  20%{
 		    transform: rotateX(0deg) skewX(0deg);
 		  }
-		}	    
-		
+		}	    		
 		.pru{
 		  text-align: center;
 		  margin-top:100px; 
 		  color: #8bb;
 		  font-size: 50px;	            
 		}
-
-
         .prulogin{
 		  text-align: center;
 		  margin-top:100px; 
 		  color: #8bb;
 		  font-size: 20px;	            
 		}
-
-
-
         @media only screen and (max-width: 770px) {
             .subtitle {
                 margin-top: 10%;
@@ -124,11 +106,7 @@
                 color: #aff;
                 text-shadow: 5px 5px 7px #477;
             }
-
-
             }
-
-
         .auto-style9 {
             width: 261px;
             height: 74px;
@@ -151,13 +129,11 @@
         .auto-style14 {
             height: 67px;
         }
-
-
     </style>
 </head>
 <body>
-
-    <h1 class="subtitle">market</h1>  
+    <h1 class="subtitle">PSM</h1>
+    <p class="subtext"  > <samp class="subtextsamp" >P</samp>erfume<samp class="subtextsamp" > S</samp>tore <samp class="subtextsamp" >M</samp>anagement</p>
     <form id="form1" runat="server">
         <div class="auto-style4">
         <div>
@@ -196,4 +172,3 @@
     </form>
     </body>
 </html>
-
