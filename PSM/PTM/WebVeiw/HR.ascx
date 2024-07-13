@@ -90,9 +90,9 @@
                         <asp:Label ID="Label12" runat="server" ForeColor="#AAFFFF" Text="Branch"></asp:Label>
                     </td>
                     <td class="auto-style29">
-                        <asp:DropDownList ID="listbranch" runat="server" AutoPostBack="True"  BackColor="#AAFFFF" CssClass="list" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="Id">
-                        </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:PTMDataBaseConnectionString %>" SelectCommand="SELECT [Id], [Name] FROM [branch]"></asp:SqlDataSource>
+                       <asp:DropDownList ID="listbranch" runat="server" AutoPostBack="True"  BackColor="#AAFFFF" CssClass="list" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="Id">
+                      </asp:DropDownList>
+                      <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:PTMDataBaseConnectionString2 %>" SelectCommand="SELECT [Id], [Name] FROM [branch]"></asp:SqlDataSource>
                     </td>
                     <td class="auto-style18">
                         &nbsp;</td>

@@ -127,8 +127,9 @@
                     </div>
                 </nav>
                 <div class="dashboard-content px-3 pt-4">                                               
-                    <uc5:HR ID="HR1" runat="server" Visible="False" />                        
+                                         
                     <uc4:analysis ID="analysis1" runat="server" Visible="True" />                        
+                      <uc5:HR ID="HR1" runat="server" Visible="False" /> 
                     <uc1:Sales_process runat="server" ID="Sales_process1" Visible="False" />                    
                     <uc2:Settings ID="Settings1" runat="server" Visible="False" />
                     <uc1:show_invoice runat="server" id="show_invoice" Visible="False" />

@@ -21,7 +21,7 @@ public partial class WebVeiw_HR : System.Web.UI.UserControl
     protected void Button3_Click(object sender, EventArgs e)
     {
         sqlcon.Open();
-        SqlCommand ComHR = new SqlCommand("insert into  employee (Name,jop_name,start_Date,salary,branch_id,password,userName) values ('"+txthname.Text+"','"+listjop.Text+"','"+Txtdate.Text+"',"+txtsalary.Text+","+listbranch.SelectedValue+",'"+txtpass.Text+"','"+txtusername.Text+"');", sqlcon);
+        SqlCommand ComHR = new SqlCommand("insert into  employee (Name,jop_name,start_Date,salary,branch_id,password,userName) values ('" + txthname.Text + "','" + listjop.Text + "','" + Txtdate.Text + "'," + txtsalary.Text + "," + listbranch.SelectedValue + ",'" + txtpass.Text + "','" + txtusername.Text + "');", sqlcon);
         ComHR.ExecuteNonQuery();
         sqlcon.Close();
         txtusername.Text = "";
